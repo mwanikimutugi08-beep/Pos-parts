@@ -205,19 +205,59 @@
     padding:10px 12px;border-radius:8px;font-size:12.5px;margin-bottom:12px;line-height:1.5;
   }
   #setup-banner code{background:#00000010;padding:1px 5px;border-radius:4px;}
+
+  #login-screen{
+    position:fixed;inset:0;background:var(--paper);z-index:100;
+    display:flex;align-items:center;justify-content:center;padding:20px;
+  }
+  #login-screen.hide{display:none;}
+  .login-box{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:24px 20px;width:100%;max-width:360px;
+  }
+  .login-box h2{margin:0 0 4px;font-size:19px;}
+  .login-box p{margin:0 0 16px;font-size:13px;color:#7a8590;}
+  #login-error{color:var(--rust);font-size:13px;margin-top:8px;display:none;}
+  #logout-btn{
+    background:none;border:1px solid rgba(255,255,255,0.3);color:#fff;
+    padding:5px 10px;border-radius:6px;font-size:12px;margin-left:8px;cursor:pointer;
+  }
+  .admin-only{display:none;}
+  body.role-admin .admin-only{display:block;}
+  nav button.admin-only{display:none;}
+  nav.role-admin-nav button.admin-only{display:block;}
 </style>
 </head>
 <body>
 
+<div id="login-screen">
+  <div class="login-box">
+    <h2>⚙ Parts Shop POS</h2>
+    <p>Sign in with the account your admin set up for you.</p>
+    <form id="login-form">
+      <label style="font-size:12px;font-weight:600;color:#5a6570;">Email</label>
+      <input id="login-email" type="email" required style="width:100%;padding:10px;border:1px solid var(--line);border-radius:7px;margin:4px 0 10px;font-size:14px;">
+      <label style="font-size:12px;font-weight:600;color:#5a6570;">Password</label>
+      <input id="login-password" type="password" required style="width:100%;padding:10px;border:1px solid var(--line);border-radius:7px;margin:4px 0;font-size:14px;">
+      <div id="login-error"></div>
+      <button type="submit" class="btn-primary">Sign In</button>
+    </form>
+  </div>
+</div>
+
 <header>
   <h1>⚙ Parts Shop POS</h1>
-  <span id="status" class="st-offline">Connecting…</span>
+  <span>
+    <span id="status" class="st-offline">Connecting…</span>
+    <button id="logout-btn">Sign Out</button>
+  </span>
 </header>
+
 
 <nav>
   <button class="tab active" data-view="sell">Sell</button>
   <button class="tab" data-view="inventory">Inventory</button>
-  <button class="tab" data-view="reports">Reports</button>
+  <button class="tab admin-only" data-view="reports">Reports</button>
 </nav>
 
 <main>
@@ -236,7 +276,7 @@
 
   <!-- INVENTORY VIEW -->
   <div class="view" id="view-inventory">
-    <button class="btn-primary" id="add-item-btn">+ Add New Part</button>
+    <button class="btn-primary admin-only" id="add-item-btn">+ Add New Part</button>
     <div class="card" style="margin-top:12px;">
       <div id="inv-list"></div>
       <div class="empty" id="inv-empty" style="display:none;">No parts added yet.</div>
@@ -303,6 +343,13 @@
       </select>
       <label>SKU / Code (optional)</label>
       <input id="f-sku" placeholder="e.g. BP-1023">
+      <label>Dealer / Supplier</label>
+      <input id="f-dealer" list="dealer-list" placeholder="e.g. Nairobi Motor Spares Ltd">
+      <datalist id="dealer-list"></datalist>
+      <label>Dealer Phone (for WhatsApp reorder alerts)</label>
+      <input id="f-dealer-phone" type="tel" placeholder="e.g. 0712345678">
+      <label>Dealer Email (for email reorder alerts)</label>
+      <input id="f-dealer-email" type="email" placeholder="e.g. sales@dealer.com">
       <label>Cost Price (what you paid)</label>
       <input id="f-cost" type="number" step="0.01" min="0" required>
       <label>Sell Price</label>
@@ -321,19 +368,105 @@
 <div class="modal-bg" id="checkout-modal">
   <div class="modal">
     <button class="close-x" data-close="checkout-modal">&times;</button>
-    <h2>Confirm Sale</h2>
+    <h2>Confirm Order</h2>
     <div id="checkout-list" style="font-size:14px;margin:10px 0;"></div>
     <div style="font-weight:800;font-size:16px;margin-top:10px;" id="checkout-total"></div>
+    <label style="display:block;font-size:12px;font-weight:600;margin:14px 0 4px;color:#5a6570;">Customer name (optional)</label>
+    <input id="checkout-customer" placeholder="Walk-in" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:7px;font-size:14px;">
+    <label style="display:block;font-size:12px;font-weight:600;margin:12px 0 4px;color:#5a6570;">Customer phone (optional, for receipt)</label>
+    <input id="checkout-phone" type="tel" placeholder="e.g. 0712345678" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:7px;font-size:14px;">
+    <label style="display:block;font-size:12px;font-weight:600;margin:12px 0 4px;color:#5a6570;">Payment Method</label>
+    <select id="checkout-payment" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:7px;font-size:14px;">
+      <option>Cash</option>
+      <option>M-Pesa</option>
+      <option>Card</option>
+      <option>On Credit</option>
+    </select>
     <button class="btn-primary" id="confirm-sale-btn">Confirm & Record</button>
     <button class="btn-secondary" data-close="checkout-modal">Cancel</button>
   </div>
 </div>
 
+<!-- RECEIPT MODAL -->
+<div class="modal-bg" id="receipt-modal">
+  <div class="modal">
+    <button class="close-x" data-close="receipt-modal">&times;</button>
+    <h2>Receipt</h2>
+    <div id="receipt-body" style="font-size:14px;line-height:1.6;margin:10px 0;"></div>
+    <button class="btn-primary" id="receipt-whatsapp-btn">Send via WhatsApp</button>
+    <button class="btn-secondary" id="receipt-sms-btn">Send via SMS</button>
+    <button class="btn-secondary" data-close="receipt-modal">Done</button>
+  </div>
+</div>
+
+
 <!-- Firebase SDK (compat build - simplest for a single HTML file) -->
 <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
 
 <script>
+/* =========================================================
+   0. AUTH & ROLES
+   Each signed-in user has a role stored in Firestore at
+   roles/{their-uid} with a field: role: "admin" or "worker".
+   An admin creates that doc manually the first time (see
+   setup instructions) — workers can't grant themselves access.
+========================================================= */
+let currentRole = 'worker';
+
+const loginScreen = document.getElementById('login-screen');
+const loginForm = document.getElementById('login-form');
+const loginError = document.getElementById('login-error');
+
+loginForm?.addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  loginError.style.display = 'none';
+  const email = document.getElementById('login-email').value.trim();
+  const password = document.getElementById('login-password').value;
+  try{
+    await auth.signInWithEmailAndPassword(email, password);
+  } catch(err){
+    loginError.textContent = 'Could not sign in: ' + (err.message || 'check your email and password.');
+    loginError.style.display = 'block';
+  }
+});
+
+document.getElementById('logout-btn').addEventListener('click', ()=>{
+  if(firebaseReady) auth.signOut();
+});
+
+async function applyRole(uid){
+  try{
+    const doc = await db.collection('roles').doc(uid).get();
+    currentRole = (doc.exists && doc.data().role === 'admin') ? 'admin' : 'worker';
+  } catch(e){
+    console.warn('Could not read role, defaulting to worker view.', e);
+    currentRole = 'worker';
+  }
+  document.body.classList.toggle('role-admin', currentRole === 'admin');
+  renderSell(); renderInventory();
+}
+
+function startAuthWatcher(){
+  if(firebaseReady){
+    auth.onAuthStateChanged(async (user)=>{
+      if(user){
+        loginScreen.classList.add('hide');
+        await applyRole(user.uid);
+        listenInventory();
+      } else {
+        loginScreen.classList.remove('hide');
+      }
+    });
+  } else {
+    // Demo mode without Firebase configured — skip login entirely
+    loginScreen.classList.add('hide');
+    document.body.classList.add('role-admin');
+    currentRole = 'admin';
+  }
+}
+
 /* =========================================================
    1. FIREBASE SETUP
    Replace the values below with YOUR OWN Firebase project
@@ -351,6 +484,7 @@ const firebaseConfig = {
 };
 
 let db = null;
+let auth = null;
 let firebaseReady = false;
 
 function showSetupBanner(msg){
@@ -365,6 +499,7 @@ try {
   } else {
     firebase.initializeApp(firebaseConfig);
     db = firebase.firestore();
+    auth = firebase.auth();
     db.enablePersistence({synchronizeTabs:true}).catch(err=>{
       console.warn("Offline persistence not enabled:", err.code);
     });
@@ -419,7 +554,7 @@ let inventory = []; // {id, name, sku, cost, price, qty, reorder}
 let cart = {}; // itemId -> qty
 
 function inventoryRef(){ return db.collection('inventory'); }
-function salesRef(){ return db.collection('sales'); }
+function ordersRef(){ return db.collection('orders'); }
 
 function listenInventory(){
   if(!firebaseReady){
@@ -471,31 +606,44 @@ async function deleteItemById(id){
   await inventoryRef().doc(id).delete();
 }
 
-async function recordSale(lines){
-  // lines: [{itemId, name, qty, price, cost}]
-  const batchTime = firebaseReady ? firebase.firestore.FieldValue.serverTimestamp() : Date.now();
+/* One order = one transaction, holding multiple line items
+   (e.g. a customer buying 2 brake pads + 1 oil filter is ONE
+   order with 2 lines, not 2 separate records). */
+let lastOrderNumber = 0;
+
+async function recordOrder(lineItems, customerName, paymentMethod){
+  // lineItems: [{itemId, name, qty, price, cost}]
+  const total = lineItems.reduce((sum,l)=> sum + l.price*l.qty, 0);
+  const cashier = (firebaseReady && auth.currentUser) ? auth.currentUser.email : 'local';
+
   if(!firebaseReady){
-    lines.forEach(l=>{
-      localSales.push({...l, ts: Date.now()});
+    lastOrderNumber += 1;
+    localSales.push({
+      orderNumber: lastOrderNumber, items: lineItems, total,
+      customerName, paymentMethod, cashier, ts: Date.now()
+    });
+    lineItems.forEach(l=>{
       const item = localInventory.find(i=>i.id===l.itemId);
       if(item) item.qty = Math.max(0, item.qty - l.qty);
     });
     renderSell(); renderInventory();
-    return;
+    return {orderNumber: lastOrderNumber, ts: new Date()};
   }
+
   setStatus('st-syncing');
+  const orderDoc = ordersRef().doc();
   const batch = db.batch();
-  lines.forEach(l=>{
-    const saleDoc = salesRef().doc();
-    batch.set(saleDoc, {
-      itemId: l.itemId, name: l.name, qty: l.qty,
-      price: l.price, cost: l.cost, ts: batchTime
-    });
+  const ts = firebase.firestore.FieldValue.serverTimestamp();
+  batch.set(orderDoc, {
+    items: lineItems, total, customerName: customerName||'', paymentMethod, cashier, ts
+  });
+  lineItems.forEach(l=>{
     const itemDoc = inventoryRef().doc(l.itemId);
     batch.update(itemDoc, {qty: firebase.firestore.FieldValue.increment(-l.qty)});
   });
   await batch.commit();
   setStatus(navigator.onLine ? 'st-online' : 'st-offline');
+  return {orderNumber: orderDoc.id.slice(-6).toUpperCase(), ts: new Date()};
 }
 
 /* =========================================================
@@ -516,6 +664,10 @@ function refreshFilterOptions(){
   // Brand suggestions for the add/edit form
   const brands = [...new Set(inventory.map(i=>i.brand).filter(Boolean))].sort();
   document.getElementById('brand-list').innerHTML = brands.map(b=>`<option value="${escapeHtml(b)}">`).join('');
+
+  // Dealer suggestions
+  const dealers = [...new Set(inventory.map(i=>i.dealer).filter(Boolean))].sort();
+  document.getElementById('dealer-list').innerHTML = dealers.map(d=>`<option value="${escapeHtml(d)}">`).join('');
 }
 
 function renderSell(){
@@ -582,13 +734,94 @@ document.getElementById('cart-checkout').addEventListener('click', ()=>{
 document.getElementById('confirm-sale-btn').addEventListener('click', async ()=>{
   const lines = Object.entries(cart).map(([id,qty])=>{
     const item = inventory.find(i=>i.id===id);
-    return {itemId:id, name:item.name, qty, price:item.price, cost:item.cost};
+    return item ? {itemId:id, name:item.name, qty, price:item.price, cost:item.cost} : null;
   }).filter(Boolean);
   if(lines.length===0) return;
-  await recordSale(lines);
+
+  const customerName = document.getElementById('checkout-customer').value.trim();
+  const customerPhone = document.getElementById('checkout-phone').value.trim();
+  const paymentMethod = document.getElementById('checkout-payment').value;
+
+  const result = await recordOrder(lines, customerName, paymentMethod);
   cart = {};
   updateCartBar();
   closeModal('checkout-modal');
+  showReceipt(lines, customerName, customerPhone, paymentMethod, result);
+
+  // reset the checkout form for next time
+  document.getElementById('checkout-customer').value = '';
+  document.getElementById('checkout-phone').value = '';
+  document.getElementById('checkout-payment').value = 'Cash';
+});
+
+function receiptText(lines, customerName, paymentMethod, result){
+  const total = lines.reduce((s,l)=> s + l.price*l.qty, 0);
+  const when = result.ts instanceof Date ? result.ts : new Date();
+  const itemLines = lines.map(l=> `${l.name} x${l.qty} - ${fmt(l.price*l.qty)}`).join('\n');
+  return `Receipt - Order #${result.orderNumber}\n${when.toLocaleString()}\n\n${itemLines}\n\nTotal: ${fmt(total)}\nPayment: ${paymentMethod}\n\nThank you for your business!`;
+}
+
+/* Normalizes a locally-typed phone number (e.g. 0712345678) into
+   international format for WhatsApp links. Assumes Kenya (+254)
+   since numbers starting with 0 are ambiguous otherwise — if your
+   shop serves other countries, just type the full number with a
+   country code instead (e.g. +2557...) and this leaves it as-is. */
+function normalizePhone(phone){
+  const digits = phone.replace(/[^0-9+]/g, '');
+  if(digits.startsWith('+')) return digits.slice(1);
+  if(digits.startsWith('0')) return '254' + digits.slice(1);
+  return digits;
+}
+
+let lastReceiptData = null;
+
+function showReceipt(lines, customerName, customerPhone, paymentMethod, result){
+  const total = lines.reduce((s,l)=> s + l.price*l.qty, 0);
+  const rows = lines.map(l=>
+    `<div style="display:flex;justify-content:space-between;padding:3px 0;">
+       <span>${escapeHtml(l.name)} × ${l.qty}</span><span>${fmt(l.price*l.qty)}</span>
+     </div>`).join('');
+  const when = result.ts instanceof Date ? result.ts : new Date();
+  document.getElementById('receipt-body').innerHTML = `
+    <div style="text-align:center;margin-bottom:10px;">
+      <b>Order #${result.orderNumber}</b><br>
+      <span style="font-size:12px;color:#7a8590;">${when.toLocaleString()}</span>
+    </div>
+    <div style="border-top:1px dashed var(--line);border-bottom:1px dashed var(--line);padding:8px 0;">${rows}</div>
+    <div style="display:flex;justify-content:space-between;font-weight:800;padding:8px 0;">
+      <span>Total</span><span>${fmt(total)}</span>
+    </div>
+    <div style="font-size:13px;color:#5a6570;">
+      Customer: ${escapeHtml(customerName || 'Walk-in')}<br>
+      Payment: ${escapeHtml(paymentMethod)}
+    </div>
+  `;
+  lastReceiptData = {lines, customerName, customerPhone, paymentMethod, result};
+  const noPhone = !customerPhone;
+  document.getElementById('receipt-whatsapp-btn').style.opacity = noPhone ? '0.5' : '1';
+  document.getElementById('receipt-sms-btn').style.opacity = noPhone ? '0.5' : '1';
+  openModal('receipt-modal');
+}
+
+document.getElementById('receipt-whatsapp-btn').addEventListener('click', ()=>{
+  if(!lastReceiptData || !lastReceiptData.customerPhone){
+    alert('No customer phone number was entered for this sale.');
+    return;
+  }
+  const {lines, customerName, customerPhone, paymentMethod, result} = lastReceiptData;
+  const text = encodeURIComponent(receiptText(lines, customerName, paymentMethod, result));
+  const phone = normalizePhone(customerPhone);
+  window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+});
+
+document.getElementById('receipt-sms-btn').addEventListener('click', ()=>{
+  if(!lastReceiptData || !lastReceiptData.customerPhone){
+    alert('No customer phone number was entered for this sale.');
+    return;
+  }
+  const {lines, customerName, paymentMethod, result} = lastReceiptData;
+  const text = encodeURIComponent(receiptText(lines, customerName, paymentMethod, result));
+  window.location.href = `sms:${lastReceiptData.customerPhone}?body=${text}`;
 });
 
 /* =========================================================
@@ -608,9 +841,10 @@ function renderInventory(){
         <b>${escapeHtml(item.name)}</b>
         <div>${[item.brand, item.category].filter(Boolean).map(escapeHtml).join(' · ')}</div>
         <div>${item.sku ? escapeHtml(item.sku)+' · ' : ''}Cost ${fmt(item.cost)} · Sell ${fmt(item.price)}</div>
+        ${item.dealer ? `<div>Dealer: ${escapeHtml(item.dealer)}</div>` : ''}
       </div>
       <div class="inv-qty ${low?'low':''}">${item.qty}</div>
-      <button class="icon-btn" data-edit="${item.id}">Edit</button>
+      <button class="icon-btn admin-only" data-edit="${item.id}">Edit</button>
     `;
     invList.appendChild(row);
   });
@@ -627,6 +861,9 @@ function openEditModal(id){
   document.getElementById('f-brand').value = item ? (item.brand||'') : '';
   document.getElementById('f-category').value = item ? (item.category||'') : '';
   document.getElementById('f-sku').value = item ? (item.sku||'') : '';
+  document.getElementById('f-dealer').value = item ? (item.dealer||'') : '';
+  document.getElementById('f-dealer-phone').value = item ? (item.dealerPhone||'') : '';
+  document.getElementById('f-dealer-email').value = item ? (item.dealerEmail||'') : '';
   document.getElementById('f-cost').value = item ? item.cost : '';
   document.getElementById('f-price').value = item ? item.price : '';
   document.getElementById('f-qty').value = item ? item.qty : '';
@@ -646,6 +883,9 @@ document.getElementById('item-form').addEventListener('submit', async (e)=>{
     brand: document.getElementById('f-brand').value.trim(),
     category: document.getElementById('f-category').value,
     sku: document.getElementById('f-sku').value.trim(),
+    dealer: document.getElementById('f-dealer').value.trim(),
+    dealerPhone: document.getElementById('f-dealer-phone').value.trim(),
+    dealerEmail: document.getElementById('f-dealer-email').value.trim(),
     cost: parseFloat(document.getElementById('f-cost').value)||0,
     price: parseFloat(document.getElementById('f-price').value)||0,
     qty: parseInt(document.getElementById('f-qty').value)||0,
@@ -667,32 +907,35 @@ document.getElementById('delete-item-btn').addEventListener('click', async ()=>{
 /* =========================================================
    7. REPORTS VIEW
 ========================================================= */
-async function getSalesLast30Days(){
+async function getOrdersLast30Days(){
   if(!firebaseReady){
     const cutoff = Date.now() - 30*24*60*60*1000;
-    return localSales.filter(s=>s.ts >= cutoff);
+    return localSales.filter(o=>o.ts >= cutoff);
   }
   const cutoff = new Date(Date.now() - 30*24*60*60*1000);
-  const snap = await salesRef().where('ts', '>=', cutoff).get();
+  const snap = await ordersRef().where('ts', '>=', cutoff).get();
   const out = [];
   snap.forEach(doc=> out.push(doc.data()));
   return out;
 }
 
 async function renderReports(){
-  const sales = await getSalesLast30Days();
-  let revenue = 0, profit = 0;
+  const orders = await getOrdersLast30Days();
+  let revenue = 0, profit = 0, itemsSold = 0;
   const moveCount = {}; // itemId -> qty sold
 
-  sales.forEach(s=>{
-    revenue += s.price * s.qty;
-    profit += (s.price - (s.cost||0)) * s.qty;
-    moveCount[s.itemId] = (moveCount[s.itemId]||0) + s.qty;
+  orders.forEach(o=>{
+    (o.items||[]).forEach(l=>{
+      revenue += l.price * l.qty;
+      profit += (l.price - (l.cost||0)) * l.qty;
+      itemsSold += l.qty;
+      moveCount[l.itemId] = (moveCount[l.itemId]||0) + l.qty;
+    });
   });
 
   document.getElementById('stat-revenue').textContent = fmt(revenue);
   document.getElementById('stat-profit').textContent = fmt(profit);
-  document.getElementById('stat-sales').textContent = sales.reduce((a,s)=>a+s.qty,0);
+  document.getElementById('stat-sales').textContent = orders.length + ' orders';
 
   const lowStockItems = inventory.filter(i => i.qty <= (i.reorder ?? 3));
   document.getElementById('stat-lowstock').textContent = lowStockItems.length;
@@ -713,9 +956,57 @@ async function renderReports(){
     ? slow.map(r=>`<div class="rank-row"><span>${escapeHtml(r.name)}</span><b>0 sold</b></div>`).join('')
     : '<div class="empty">Nothing sitting idle — nice.</div>';
 
-  document.getElementById('low-stock-list').innerHTML = lowStockItems.length
-    ? lowStockItems.map(i=>`<div class="rank-row"><span>${escapeHtml(i.name)}</span><b>${i.qty} left</b></div>`).join('')
-    : '<div class="empty">All stock levels healthy.</div>';
+  renderLowStock(lowStockItems);
+}
+
+function renderLowStock(lowStockItems){
+  if(lowStockItems.length === 0){
+    document.getElementById('low-stock-list').innerHTML = '<div class="empty">All stock levels healthy.</div>';
+    return;
+  }
+
+  // Group by dealer so we can send one message per supplier
+  // instead of one per item.
+  const byDealer = {};
+  lowStockItems.forEach(i=>{
+    const key = i.dealer || 'No dealer on file';
+    byDealer[key] = byDealer[key] || [];
+    byDealer[key].push(i);
+  });
+
+  let html = '';
+  Object.entries(byDealer).forEach(([dealerName, items])=>{
+    const sample = items[0];
+    const itemList = items.map(i=>`- ${i.name} (currently ${i.qty} left)`).join('\n');
+    const message = `Hi ${dealerName !== 'No dealer on file' ? dealerName : ''}, we're running low on the following and would like to place an order:\n\n${itemList}\n\nPlease let us know availability and pricing. Thank you.`;
+
+    html += `<div style="padding:10px 0;border-bottom:1px solid var(--line);">
+      <div style="font-weight:700;font-size:13px;margin-bottom:6px;">${escapeHtml(dealerName)}</div>
+      ${items.map(i=>`<div class="rank-row" style="border:none;padding:2px 0;"><span>${escapeHtml(i.name)}</span><b>${i.qty} left</b></div>`).join('')}
+      ${dealerName !== 'No dealer on file' ? `
+      <div style="display:flex;gap:8px;margin-top:8px;">
+        ${sample.dealerPhone ? `<button class="icon-btn reorder-whatsapp" data-phone="${escapeHtml(sample.dealerPhone)}" data-msg="${encodeURIComponent(message)}" style="flex:1;">WhatsApp Dealer</button>` : ''}
+        ${sample.dealerEmail ? `<button class="icon-btn reorder-email" data-email="${escapeHtml(sample.dealerEmail)}" data-msg="${encodeURIComponent(message)}" data-dealer="${escapeHtml(dealerName)}" style="flex:1;">Email Dealer</button>` : ''}
+      </div>
+      ${!sample.dealerPhone && !sample.dealerEmail ? '<div style="font-size:12px;color:#7a8590;margin-top:4px;">Add a phone or email for this dealer in Inventory to enable one-tap reorder.</div>' : ''}
+      ` : '<div style="font-size:12px;color:#7a8590;margin-top:4px;">Set a dealer on these parts to enable reorder alerts.</div>'}
+    </div>`;
+  });
+
+  document.getElementById('low-stock-list').innerHTML = html;
+
+  document.querySelectorAll('.reorder-whatsapp').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const phone = normalizePhone(btn.dataset.phone);
+      window.open(`https://wa.me/${phone}?text=${btn.dataset.msg}`, '_blank');
+    });
+  });
+  document.querySelectorAll('.reorder-email').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const subject = encodeURIComponent(`Stock Reorder Request - ${btn.dataset.dealer}`);
+      window.location.href = `mailto:${btn.dataset.email}?subject=${subject}&body=${btn.dataset.msg}`;
+    });
+  });
 }
 
 /* =========================================================
@@ -733,7 +1024,7 @@ function escapeHtml(str){
 /* =========================================================
    9. BOOT
 ========================================================= */
-listenInventory();
+startAuthWatcher();
 </script>
 </body>
 </html>
