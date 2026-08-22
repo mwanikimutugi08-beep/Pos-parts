@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Parts Shop POS</title>
+<style>
+  :root{
+    --ink:#1b2430;
+    --paper:#f6f4ef;
+    --steel:#3c5a6b;
+    --steel-dark:#2a4150;
+    --rust:#b5502e;
+    --brass:#c7952a;
+    --green:#3e6b4a;
+    --line:#d9d4c8;
+    --card:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    -webkit-tap-highlight-color:transparent;
+  }
+  header{
+    background:var(--steel-dark);
+    color:#fff;
+    padding:14px 16px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:sticky;
+    top:0;
+    z-index:20;
+  }
+  header h1{
+    font-size:17px;
+    margin:0;
+    font-weight:700;
+    letter-spacing:0.3px;
+  }
+  #status{
+    font-size:11px;
+    padding:4px 9px;
+    border-radius:20px;
+    font-weight:600;
+  }
+  .st-online{background:#2e5d3d;}
+  .st-offline{background:var(--rust);}
+  .st-syncing{background:var(--brass); color:#3a2a00;}
+
+  nav{
+    display:flex;
+    background:var(--card);
+    border-bottom:1px solid var(--line);
+    position:sticky;
+    top:48px;
+    z-index:19;
+  }
+  nav button{
+    flex:1;
+    padding:12px 4px;
+    background:none;
+    border:none;
+    font-size:13px;
+    font-weight:600;
+    color:#7a8590;
+    border-bottom:3px solid transparent;
+    cursor:pointer;
+  }
+  nav button.active{
+    color:var(--steel-dark);
+    border-bottom-color:var(--rust);
+  }
+
+  main{
+    padding:14px;
+    max-width:720px;
+    margin:0 auto;
+    padding-bottom:80px;
+  }
+  .view{display:none;}
+  .view.active{display:block;}
+
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:14px;
+    margin-bottom:12px;
+  }
+
+  /* SELL VIEW */
+  #search{
+    width:100%;
+    padding:12px;
+    font-size:15px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    margin-bottom:12px;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+    gap:10px;
+  }
+  .item-btn{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:12px;
+    text-align:left;
+    cursor:pointer;
+    transition:transform .06s ease;
+    position:relative;
+  }
+  .item-btn:active{transform:scale(0.96);background:#eef2f0;}
+  .item-btn.low{border-color:var(--rust);}
+  .item-name{font-weight:700;font-size:14px;margin-bottom:4px;}
+  .item-meta{font-size:12px;color:#7a8590;}
+  .item-price{font-weight:700;color:var(--steel-dark);margin-top:6px;font-size:15px;}
+  .badge-low{
+    position:absolute;top:8px;right:8px;
+    background:var(--rust);color:#fff;
+    font-size:10px;padding:2px 6px;border-radius:10px;font-weight:700;
+  }
+  .empty{color:#7a8590;text-align:center;padding:40px 10px;font-size:14px;}
+
+  /* CART */
+  #cart-bar{
+    position:fixed;bottom:0;left:0;right:0;
+    background:var(--steel-dark);color:#fff;
+    padding:12px 16px;
+    display:none;
+    align-items:center;
+    justify-content:space-between;
+    z-index:25;
+  }
+  #cart-bar.show{display:flex;}
+  #cart-bar button{
+    background:var(--rust);color:#fff;border:none;
+    padding:10px 18px;border-radius:8px;font-weight:700;font-size:14px;
+  }
+
+  /* INVENTORY */
+  .inv-row{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:10px 0;border-bottom:1px solid var(--line);
+    gap:8px;
+  }
+  .inv-row:last-child{border-bottom:none;}
+  .inv-info{flex:1;min-width:0;}
+  .inv-info b{font-size:14px;}
+  .inv-info div{font-size:12px;color:#7a8590;}
+  .inv-qty{font-weight:700;font-size:15px;min-width:40px;text-align:right;}
+  .inv-qty.low{color:var(--rust);}
+  .icon-btn{
+    background:none;border:1px solid var(--line);border-radius:6px;
+    padding:6px 9px;font-size:13px;cursor:pointer;
+  }
+
+  form label{
+    display:block;font-size:12px;font-weight:600;margin:10px 0 4px;color:#5a6570;
+  }
+  form input, form select{
+    width:100%;padding:10px;border:1px solid var(--line);border-radius:7px;font-size:14px;
+  }
+  .btn-primary{
+    background:var(--steel-dark);color:#fff;border:none;
+    padding:12px;border-radius:8px;font-weight:700;width:100%;margin-top:14px;cursor:pointer;
+    font-size:14px;
+  }
+  .btn-secondary{
+    background:none;border:1px solid var(--line);color:var(--ink);
+    padding:12px;border-radius:8px;font-weight:600;width:100%;margin-top:8px;cursor:pointer;
+  }
+
+  /* REPORTS */
+  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+  .stat{
+    background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px;
+  }
+  .stat .n{font-size:20px;font-weight:800;color:var(--steel-dark);}
+  .stat .l{font-size:11px;color:#7a8590;text-transform:uppercase;letter-spacing:0.4px;margin-top:2px;}
+  .rank-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;}
+  .rank-row:last-child{border-bottom:none;}
+  .sectiontitle{font-size:13px;font-weight:700;color:#5a6570;text-transform:uppercase;letter-spacing:0.4px;margin:18px 0 8px;}
+
+  .modal-bg{
+    display:none;position:fixed;inset:0;background:rgba(20,25,30,0.5);
+    z-index:30;align-items:flex-end;justify-content:center;
+  }
+  .modal-bg.show{display:flex;}
+  .modal{
+    background:var(--paper);width:100%;max-width:480px;
+    border-radius:16px 16px 0 0;padding:18px;max-height:88vh;overflow-y:auto;
+  }
+  .modal h2{margin:0 0 6px;font-size:17px;}
+  .close-x{float:right;background:none;border:none;font-size:20px;cursor:pointer;color:#7a8590;}
+
+  #setup-banner{
+    background:#fff3e0;border:1px solid var(--brass);color:#5a4200;
+    padding:10px 12px;border-radius:8px;font-size:12.5px;margin-bottom:12px;line-height:1.5;
+  }
+  #setup-banner code{background:#00000010;padding:1px 5px;border-radius:4px;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>⚙ Parts Shop POS</h1>
+  <span id="status" class="st-offline">Connecting…</span>
+</header>
+
+<nav>
+  <button class="tab active" data-view="sell">Sell</button>
+  <button class="tab" data-view="inventory">Inventory</button>
+  <button class="tab" data-view="reports">Reports</button>
+</nav>
+
+<main>
+
+  <div id="setup-banner" style="display:none;"></div>
+
+  <!-- SELL VIEW -->
+  <div class="view active" id="view-sell">
+    <input id="search" type="text" placeholder="Search parts…">
+    <select id="category-filter" style="width:100%;padding:11px;margin-bottom:12px;border:1px solid var(--line);border-radius:8px;font-size:14px;">
+      <option value="">All Categories</option>
+    </select>
+    <div class="grid" id="sell-grid"></div>
+    <div class="empty" id="sell-empty" style="display:none;">No items yet — add stock in the Inventory tab.</div>
+  </div>
+
+  <!-- INVENTORY VIEW -->
+  <div class="view" id="view-inventory">
+    <button class="btn-primary" id="add-item-btn">+ Add New Part</button>
+    <div class="card" style="margin-top:12px;">
+      <div id="inv-list"></div>
+      <div class="empty" id="inv-empty" style="display:none;">No parts added yet.</div>
+    </div>
+  </div>
+
+  <!-- REPORTS VIEW -->
+  <div class="view" id="view-reports">
+    <div class="stat-grid">
+      <div class="stat"><div class="n" id="stat-revenue">—</div><div class="l">Revenue (30d)</div></div>
+      <div class="stat"><div class="n" id="stat-profit">—</div><div class="l">Profit (30d)</div></div>
+      <div class="stat"><div class="n" id="stat-sales">—</div><div class="l">Sales (30d)</div></div>
+      <div class="stat"><div class="n" id="stat-lowstock">—</div><div class="l">Low Stock Items</div></div>
+    </div>
+
+    <div class="card">
+      <div class="sectiontitle">Fastest Movers (30d)</div>
+      <div id="fast-movers"></div>
+    </div>
+    <div class="card">
+      <div class="sectiontitle">Slowest / Dead Stock</div>
+      <div id="slow-movers"></div>
+    </div>
+    <div class="card">
+      <div class="sectiontitle">Low Stock — Reorder Soon</div>
+      <div id="low-stock-list"></div>
+    </div>
+  </div>
+
+</main>
+
+<div id="cart-bar">
+  <span id="cart-summary">0 items</span>
+  <button id="cart-checkout">Record Sale</button>
+</div>
+
+<!-- ADD/EDIT ITEM MODAL -->
+<div class="modal-bg" id="item-modal">
+  <div class="modal">
+    <button class="close-x" data-close="item-modal">&times;</button>
+    <h2 id="item-modal-title">Add Part</h2>
+    <form id="item-form">
+      <input type="hidden" id="item-id">
+      <label>Part Name</label>
+      <input id="f-name" required placeholder="e.g. Front Brake Pad Set">
+      <label>Brand</label>
+      <input id="f-brand" list="brand-list" placeholder="e.g. Honda, Yamaha, Generic">
+      <datalist id="brand-list"></datalist>
+      <label>Category</label>
+      <select id="f-category">
+        <option value="">Uncategorized</option>
+        <option>Engine</option>
+        <option>Brakes</option>
+        <option>Electrical</option>
+        <option>Suspension</option>
+        <option>Tyres &amp; Wheels</option>
+        <option>Body &amp; Frame</option>
+        <option>Transmission &amp; Chain</option>
+        <option>Exhaust</option>
+        <option>Lighting</option>
+        <option>Oils &amp; Fluids</option>
+        <option>Accessories</option>
+        <option>Other</option>
+      </select>
+      <label>SKU / Code (optional)</label>
+      <input id="f-sku" placeholder="e.g. BP-1023">
+      <label>Cost Price (what you paid)</label>
+      <input id="f-cost" type="number" step="0.01" min="0" required>
+      <label>Sell Price</label>
+      <input id="f-price" type="number" step="0.01" min="0" required>
+      <label>Quantity in Stock</label>
+      <input id="f-qty" type="number" step="1" min="0" required>
+      <label>Reorder Alert Level</label>
+      <input id="f-reorder" type="number" step="1" min="0" value="3">
+      <button type="submit" class="btn-primary">Save Part</button>
+      <button type="button" class="btn-secondary" id="delete-item-btn" style="display:none;color:var(--rust);">Delete Part</button>
+    </form>
+  </div>
+</div>
+
+<!-- CHECKOUT CONFIRM MODAL -->
+<div class="modal-bg" id="checkout-modal">
+  <div class="modal">
+    <button class="close-x" data-close="checkout-modal">&times;</button>
+    <h2>Confirm Sale</h2>
+    <div id="checkout-list" style="font-size:14px;margin:10px 0;"></div>
+    <div style="font-weight:800;font-size:16px;margin-top:10px;" id="checkout-total"></div>
+    <button class="btn-primary" id="confirm-sale-btn">Confirm & Record</button>
+    <button class="btn-secondary" data-close="checkout-modal">Cancel</button>
+  </div>
+</div>
+
+<!-- Firebase SDK (compat build - simplest for a single HTML file) -->
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+
+<script>
+/* =========================================================
+   1. FIREBASE SETUP
+   Replace the values below with YOUR OWN Firebase project
+   config. See the instructions given alongside this file
+   for how to get these values (it takes about 5 minutes,
+   free, no card required).
+========================================================= */
+const firebaseConfig = {
+  apiKey: "AIzaSyCXsDfxEkv_Hmn2dJROhLr_7Wz106mp_rc",
+  authDomain: "cashbook-8d088.firebaseapp.com",
+  projectId: "cashbook-8d088",
+  storageBucket: "cashbook-8d088.firebasestorage.app",
+  messagingSenderId: "1007930357972",
+  appId: "1:1007930357972:web:76bfd8ebafd953b9552341"
+};
+
+let db = null;
+let firebaseReady = false;
+
+function showSetupBanner(msg){
+  const b = document.getElementById('setup-banner');
+  b.style.display = 'block';
+  b.innerHTML = msg;
+}
+
+try {
+  if (firebaseConfig.apiKey.startsWith("PASTE_")) {
+    showSetupBanner("⚠ <b>Setup needed:</b> open this file in a text editor and paste your Firebase project keys into the <code>firebaseConfig</code> section near the bottom. Instructions were provided with this file. Until then, the app runs in local-only demo mode (data will not be saved permanently or synced).");
+  } else {
+    firebase.initializeApp(firebaseConfig);
+    db = firebase.firestore();
+    db.enablePersistence({synchronizeTabs:true}).catch(err=>{
+      console.warn("Offline persistence not enabled:", err.code);
+    });
+    firebaseReady = true;
+  }
+} catch(e){
+  showSetupBanner("⚠ Could not connect to Firebase. Check your config values. Error: " + e.message);
+}
+
+/* Local fallback store, used only if Firebase isn't configured yet,
+   so the app is still clickable/demo-able before setup. */
+let localInventory = [];
+let localSales = [];
+
+/* =========================================================
+   2. CONNECTION STATUS INDICATOR
+========================================================= */
+const statusEl = document.getElementById('status');
+function setStatus(state){
+  statusEl.className = state;
+  if(state==='st-online') statusEl.textContent = 'Online · Synced';
+  if(state==='st-offline') statusEl.textContent = 'Offline · Saving locally';
+  if(state==='st-syncing') statusEl.textContent = 'Syncing…';
+}
+window.addEventListener('online', ()=> setStatus(firebaseReady?'st-online':'st-offline'));
+window.addEventListener('offline', ()=> setStatus('st-offline'));
+setStatus(navigator.onLine && firebaseReady ? 'st-online' : 'st-offline');
+
+/* =========================================================
+   3. NAVIGATION
+========================================================= */
+document.querySelectorAll('nav .tab').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('nav .tab').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('view-'+btn.dataset.view).classList.add('active');
+    if(btn.dataset.view==='reports') renderReports();
+  });
+});
+
+function openModal(id){ document.getElementById(id).classList.add('show'); }
+function closeModal(id){ document.getElementById(id).classList.remove('show'); }
+document.querySelectorAll('[data-close]').forEach(el=>{
+  el.addEventListener('click', ()=> closeModal(el.dataset.close));
+});
+
+/* =========================================================
+   4. DATA LAYER (Firestore if configured, else local array)
+========================================================= */
+let inventory = []; // {id, name, sku, cost, price, qty, reorder}
+let cart = {}; // itemId -> qty
+
+function inventoryRef(){ return db.collection('inventory'); }
+function salesRef(){ return db.collection('sales'); }
+
+function listenInventory(){
+  if(!firebaseReady){
+    inventory = localInventory;
+    renderSell(); renderInventory();
+    return;
+  }
+  inventoryRef().onSnapshot(snap=>{
+    inventory = [];
+    snap.forEach(doc=> inventory.push({id:doc.id, ...doc.data()}));
+    inventory.sort((a,b)=> a.name.localeCompare(b.name));
+    renderSell();
+    renderInventory();
+  }, err=>{
+    console.error(err);
+    setStatus('st-offline');
+  });
+}
+
+async function saveItem(item){
+  if(!firebaseReady){
+    if(item.id){
+      const i = localInventory.findIndex(x=>x.id===item.id);
+      localInventory[i] = item;
+    } else {
+      item.id = 'local-'+Date.now();
+      localInventory.push(item);
+    }
+    renderSell(); renderInventory();
+    return;
+  }
+  setStatus('st-syncing');
+  if(item.id){
+    const {id, ...data} = item;
+    await inventoryRef().doc(id).set(data, {merge:true});
+  } else {
+    const {id, ...data} = item;
+    await inventoryRef().add(data);
+  }
+  setStatus(navigator.onLine ? 'st-online' : 'st-offline');
+}
+
+async function deleteItemById(id){
+  if(!firebaseReady){
+    localInventory = localInventory.filter(x=>x.id!==id);
+    renderSell(); renderInventory();
+    return;
+  }
+  await inventoryRef().doc(id).delete();
+}
+
+async function recordSale(lines){
+  // lines: [{itemId, name, qty, price, cost}]
+  const batchTime = firebaseReady ? firebase.firestore.FieldValue.serverTimestamp() : Date.now();
+  if(!firebaseReady){
+    lines.forEach(l=>{
+      localSales.push({...l, ts: Date.now()});
+      const item = localInventory.find(i=>i.id===l.itemId);
+      if(item) item.qty = Math.max(0, item.qty - l.qty);
+    });
+    renderSell(); renderInventory();
+    return;
+  }
+  setStatus('st-syncing');
+  const batch = db.batch();
+  lines.forEach(l=>{
+    const saleDoc = salesRef().doc();
+    batch.set(saleDoc, {
+      itemId: l.itemId, name: l.name, qty: l.qty,
+      price: l.price, cost: l.cost, ts: batchTime
+    });
+    const itemDoc = inventoryRef().doc(l.itemId);
+    batch.update(itemDoc, {qty: firebase.firestore.FieldValue.increment(-l.qty)});
+  });
+  await batch.commit();
+  setStatus(navigator.onLine ? 'st-online' : 'st-offline');
+}
+
+/* =========================================================
+   5. SELL VIEW
+========================================================= */
+const sellGrid = document.getElementById('sell-grid');
+const searchInput = document.getElementById('search');
+
+const categoryFilter = document.getElementById('category-filter');
+
+function refreshFilterOptions(){
+  // Category dropdown
+  const cats = [...new Set(inventory.map(i=>i.category).filter(Boolean))].sort();
+  const currentCat = categoryFilter.value;
+  categoryFilter.innerHTML = '<option value="">All Categories</option>' +
+    cats.map(c=>`<option ${c===currentCat?'selected':''}>${escapeHtml(c)}</option>`).join('');
+
+  // Brand suggestions for the add/edit form
+  const brands = [...new Set(inventory.map(i=>i.brand).filter(Boolean))].sort();
+  document.getElementById('brand-list').innerHTML = brands.map(b=>`<option value="${escapeHtml(b)}">`).join('');
+}
+
+function renderSell(){
+  const q = searchInput.value.trim().toLowerCase();
+  const cat = categoryFilter.value;
+  refreshFilterOptions();
+  const items = inventory.filter(i => {
+    const matchesQ = !q || i.name.toLowerCase().includes(q) || (i.sku||'').toLowerCase().includes(q) || (i.brand||'').toLowerCase().includes(q);
+    const matchesCat = !cat || i.category === cat;
+    return matchesQ && matchesCat;
+  });
+  sellGrid.innerHTML = '';
+  document.getElementById('sell-empty').style.display = inventory.length ? 'none' : 'block';
+
+  items.forEach(item=>{
+    const low = item.qty <= (item.reorder ?? 3);
+    const btn = document.createElement('div');
+    btn.className = 'item-btn' + (low ? ' low' : '');
+    const subline = [item.brand, item.category].filter(Boolean).join(' · ');
+    btn.innerHTML = `
+      ${low ? '<span class="badge-low">LOW</span>' : ''}
+      <div class="item-name">${escapeHtml(item.name)}</div>
+      ${subline ? `<div class="item-meta">${escapeHtml(subline)}</div>` : ''}
+      <div class="item-meta">${item.qty} in stock${item.sku ? ' · '+escapeHtml(item.sku) : ''}</div>
+      <div class="item-price">${fmt(item.price)}</div>
+    `;
+    btn.addEventListener('click', ()=>{
+      if(item.qty <= 0){ alert('Out of stock.'); return; }
+      cart[item.id] = (cart[item.id]||0) + 1;
+      updateCartBar();
+    });
+    sellGrid.appendChild(btn);
+  });
+}
+searchInput.addEventListener('input', renderSell);
+categoryFilter.addEventListener('change', renderSell);
+
+function updateCartBar(){
+  const bar = document.getElementById('cart-bar');
+  const totalQty = Object.values(cart).reduce((a,b)=>a+b,0);
+  if(totalQty===0){ bar.classList.remove('show'); return; }
+  bar.classList.add('show');
+  document.getElementById('cart-summary').textContent = totalQty + ' item' + (totalQty>1?'s':'') + ' in sale';
+}
+
+document.getElementById('cart-checkout').addEventListener('click', ()=>{
+  const list = document.getElementById('checkout-list');
+  let total = 0;
+  list.innerHTML = '';
+  Object.entries(cart).forEach(([id, qty])=>{
+    const item = inventory.find(i=>i.id===id);
+    if(!item) return;
+    const lineTotal = item.price * qty;
+    total += lineTotal;
+    const row = document.createElement('div');
+    row.style.display='flex'; row.style.justifyContent='space-between'; row.style.padding='4px 0';
+    row.innerHTML = `<span>${escapeHtml(item.name)} × ${qty}</span><span>${fmt(lineTotal)}</span>`;
+    list.appendChild(row);
+  });
+  document.getElementById('checkout-total').textContent = 'Total: ' + fmt(total);
+  openModal('checkout-modal');
+});
+
+document.getElementById('confirm-sale-btn').addEventListener('click', async ()=>{
+  const lines = Object.entries(cart).map(([id,qty])=>{
+    const item = inventory.find(i=>i.id===id);
+    return {itemId:id, name:item.name, qty, price:item.price, cost:item.cost};
+  }).filter(Boolean);
+  if(lines.length===0) return;
+  await recordSale(lines);
+  cart = {};
+  updateCartBar();
+  closeModal('checkout-modal');
+});
+
+/* =========================================================
+   6. INVENTORY VIEW
+========================================================= */
+const invList = document.getElementById('inv-list');
+
+function renderInventory(){
+  invList.innerHTML = '';
+  document.getElementById('inv-empty').style.display = inventory.length ? 'none' : 'block';
+  inventory.forEach(item=>{
+    const low = item.qty <= (item.reorder ?? 3);
+    const row = document.createElement('div');
+    row.className = 'inv-row';
+    row.innerHTML = `
+      <div class="inv-info">
+        <b>${escapeHtml(item.name)}</b>
+        <div>${[item.brand, item.category].filter(Boolean).map(escapeHtml).join(' · ')}</div>
+        <div>${item.sku ? escapeHtml(item.sku)+' · ' : ''}Cost ${fmt(item.cost)} · Sell ${fmt(item.price)}</div>
+      </div>
+      <div class="inv-qty ${low?'low':''}">${item.qty}</div>
+      <button class="icon-btn" data-edit="${item.id}">Edit</button>
+    `;
+    invList.appendChild(row);
+  });
+  invList.querySelectorAll('[data-edit]').forEach(b=>{
+    b.addEventListener('click', ()=> openEditModal(b.dataset.edit));
+  });
+}
+
+function openEditModal(id){
+  const item = inventory.find(i=>i.id===id);
+  document.getElementById('item-modal-title').textContent = item ? 'Edit Part' : 'Add Part';
+  document.getElementById('item-id').value = item ? item.id : '';
+  document.getElementById('f-name').value = item ? item.name : '';
+  document.getElementById('f-brand').value = item ? (item.brand||'') : '';
+  document.getElementById('f-category').value = item ? (item.category||'') : '';
+  document.getElementById('f-sku').value = item ? (item.sku||'') : '';
+  document.getElementById('f-cost').value = item ? item.cost : '';
+  document.getElementById('f-price').value = item ? item.price : '';
+  document.getElementById('f-qty').value = item ? item.qty : '';
+  document.getElementById('f-reorder').value = item ? (item.reorder ?? 3) : 3;
+  document.getElementById('delete-item-btn').style.display = item ? 'block' : 'none';
+  openModal('item-modal');
+}
+
+document.getElementById('add-item-btn').addEventListener('click', ()=> openEditModal(null));
+
+document.getElementById('item-form').addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const id = document.getElementById('item-id').value || null;
+  const item = {
+    id,
+    name: document.getElementById('f-name').value.trim(),
+    brand: document.getElementById('f-brand').value.trim(),
+    category: document.getElementById('f-category').value,
+    sku: document.getElementById('f-sku').value.trim(),
+    cost: parseFloat(document.getElementById('f-cost').value)||0,
+    price: parseFloat(document.getElementById('f-price').value)||0,
+    qty: parseInt(document.getElementById('f-qty').value)||0,
+    reorder: parseInt(document.getElementById('f-reorder').value)||0
+  };
+  await saveItem(item);
+  closeModal('item-modal');
+});
+
+document.getElementById('delete-item-btn').addEventListener('click', async ()=>{
+  const id = document.getElementById('item-id').value;
+  if(!id) return;
+  if(confirm('Delete this part? This cannot be undone.')){
+    await deleteItemById(id);
+    closeModal('item-modal');
+  }
+});
+
+/* =========================================================
+   7. REPORTS VIEW
+========================================================= */
+async function getSalesLast30Days(){
+  if(!firebaseReady){
+    const cutoff = Date.now() - 30*24*60*60*1000;
+    return localSales.filter(s=>s.ts >= cutoff);
+  }
+  const cutoff = new Date(Date.now() - 30*24*60*60*1000);
+  const snap = await salesRef().where('ts', '>=', cutoff).get();
+  const out = [];
+  snap.forEach(doc=> out.push(doc.data()));
+  return out;
+}
+
+async function renderReports(){
+  const sales = await getSalesLast30Days();
+  let revenue = 0, profit = 0;
+  const moveCount = {}; // itemId -> qty sold
+
+  sales.forEach(s=>{
+    revenue += s.price * s.qty;
+    profit += (s.price - (s.cost||0)) * s.qty;
+    moveCount[s.itemId] = (moveCount[s.itemId]||0) + s.qty;
+  });
+
+  document.getElementById('stat-revenue').textContent = fmt(revenue);
+  document.getElementById('stat-profit').textContent = fmt(profit);
+  document.getElementById('stat-sales').textContent = sales.reduce((a,s)=>a+s.qty,0);
+
+  const lowStockItems = inventory.filter(i => i.qty <= (i.reorder ?? 3));
+  document.getElementById('stat-lowstock').textContent = lowStockItems.length;
+
+  // fast / slow movers
+  const ranked = inventory.map(i=>({
+    name:i.name, sold: moveCount[i.id]||0
+  })).sort((a,b)=> b.sold - a.sold);
+
+  const fast = ranked.slice(0,5);
+  const slow = ranked.filter(r=>r.sold===0).slice(0,5);
+
+  document.getElementById('fast-movers').innerHTML = fast.length
+    ? fast.map(r=>`<div class="rank-row"><span>${escapeHtml(r.name)}</span><b>${r.sold} sold</b></div>`).join('')
+    : '<div class="empty">No sales recorded yet.</div>';
+
+  document.getElementById('slow-movers').innerHTML = slow.length
+    ? slow.map(r=>`<div class="rank-row"><span>${escapeHtml(r.name)}</span><b>0 sold</b></div>`).join('')
+    : '<div class="empty">Nothing sitting idle — nice.</div>';
+
+  document.getElementById('low-stock-list').innerHTML = lowStockItems.length
+    ? lowStockItems.map(i=>`<div class="rank-row"><span>${escapeHtml(i.name)}</span><b>${i.qty} left</b></div>`).join('')
+    : '<div class="empty">All stock levels healthy.</div>';
+}
+
+/* =========================================================
+   8. HELPERS
+========================================================= */
+function fmt(n){
+  return (Number(n)||0).toLocaleString(undefined, {style:'currency', currency:'USD'});
+}
+function escapeHtml(str){
+  const d = document.createElement('div');
+  d.textContent = str||'';
+  return d.innerHTML;
+}
+
+/* =========================================================
+   9. BOOT
+========================================================= */
+listenInventory();
+</script>
+</body>
+</html>
