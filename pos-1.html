@@ -1,0 +1,1978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Parts Shop POS</title>
+<meta name="theme-color" content="#2a4150">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" type="image/png" sizes="192x192" href="data:image/png;base64,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">
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiUGFydHMgU2hvcCBQT1MiLCJzaG9ydF9uYW1lIjoiUGFydHMgUE9TIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJzdGFydF91cmwiOiIuL3Bvcy0xLmh0bWwiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiI2Y2ZjRlZiIsInRoZW1lX2NvbG9yIjoiIzJhNDE1MCIsImljb25zIjpbeyJzcmMiOiJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQU1BQUFBREFDQVlBQUFCUzNHd0hBQUFJaUVsRVFWUjRuTzJkUGE3VVNCUkc3ME5FQkFURUUwMUFPUEdJbklBRnNJYTNwcmNHRmtCQWpvZ0pDWWlJQ1FnbVFtSWlnNSs3eXE2eTYrZituQ09OQnFHbXUxMytUdDFiMVc3M25VemtyMy8rL1RYejlVRVAzejUvdXB2eHVzTmVsTEJETFNPazZQb0NoQjVhMFV1R0xrOUs4S0VYclVWbyttUUVIMGJSU29RbVQwTHdZUlpYUlhoeTlRMFFmcGpKMWZ4ZEVvRHdnd2F1NVBCVStTRDRvSlhhbHFpNkFoQiswRXh0UHFzRUlQeGdnWnFjRmd0QStNRVNwWGt0RW9Ed2cwVktjbnNvQU9FSHl4emw5L0xuQUFDVzJSV0EyUjg4c0pmanJBQ0VIenlSeTNOU0FNSVBIa25sbWpVQWhPWkdBR1ovOE13MjMxUUFDTTBqQVpqOUlRTHJuRk1CSURTL0JXRDJoMGdzZWFjQ1FHZ1FBRUp6SjBMN0EzR2hBa0JvRUFCQ2d3QVFtcWV6MzBCRTN0My91UG03dHcvUEo3d1RlTUlDZUN5cDhPLzlQZlNGRm1nZ1J5RkhndkVnd0NCS3c0MEVZMEdBQWRTR0dnbkdnUUFRR2dTQTBDQUFoQVlCSURRSUFLRkJBS1c4dS8vQmJ0QUE3dmdrdUMwalFzdGxFKzFBZ0l0b21LVVI0andJY0FJTm9jK0JESFVnUUFXYWc3OEZFY3BBZ0FNc2hUNEhNdVJCZ0F3ZWdyOEZFVzVoR3pTQngvQ0wxQjNYZGh2VzY1aTRxZ0RMU1hyNzhQem1oSlhNZmw1UGNvcTk4VGdhQjArVnhJMEFKZUhObmJoSXdkK3lIWlBTc2ZBaWdZc1c2TXFYVFNLSFgwUk90emxleHMxOEJUaHpJcGJaeTh0Sm5JV0hLaER5cmhBRUh4WmN0RUFBWjBFQUNBMENRR2hDcmdGbThQMUQvVkMvZVAyend6dUJOUWpRaVRPQlAzb09UVUo0MkFFU2NiQU5LcUpuVjZkRjZFdVpLWU9YOElzNEVVQmtuZ1Nsb2IvLytxejZ1Ui8rL3Evb2NTTmw4QlIrRVVjQ2lJeVY0Q2o0WndKL3hKRVFJMFJBQU9YMGxtQXYrRDFDbjJOUGh0NGllSktBUlhBRnVmQ1BEUDcyTlZNaWZQL3dWTldDV1RPdUtrQ3YyVjlUOEhQa0trSXZFYnhVQVRjQ2pBeC9xK0IvK2ZoZVJFUmV2bnJUNVBsRTBpSWdRUjRYbndTUEN2LzkxMmVxWnYwVXFmZllhM3RXeS9iekZWd0kwSnJ2SDU0bXcyK0psQVFqUDZld2dua0JXczlDUFZ1ZTBhVGVkMnNKckZjQnBvUVYxbWY5RktuZEluYUovbUM2QXJTY2ZUeUdmMDNQZFlIbEttQldnSjZEN2kzOEN6MlB5Nm9FWmdWb3lYbzI5QnIraGZYeHNTZzJLa0RQMWljYTBWc2hrd0swd252Zm4yUFU1d1FXQ0MzQW1pamhYNGgydkRuTUNkQ3F6RWJxKzNQMFdBOVlhNFBNQ2RDQ3lDVi9qNGpqWWtxQUhyTkwxTmwvb2NmeFc2b0NwZ1JvUWNSWnJvWm80eE5PZ0RYUlovK0Z5T05nUm9BV1pUWGE3SGFXRnVOa3BRMHlJMEJySXM5NkthS09SMWdCQUVRQ0NjQysvekVScnhNeUlZQ1ZmaEllWStHOG1SQUFvQmNoQktEOUtTZGFHeFJDQUlBY0NBQ2hVVi9qTEN5a3pyRGNGR3Y5NTVZM3lOSkM3dnhwdWFtV21qdkRqYmk1bFliK2Z4MzhIQnBFV045Rnd2T2Q1VlMwUUY1bitTMGw0YTk1bkhVMG5QZnBBbWdZaEJIVWhob0p4akJWZ05rSER6cVltWU5wQWtRSy85blpQRW9WbU1uMEZnaGdKZ2dBb1VFQUNBMEN3SFJtZmg0d1RRQU5INEpvUjhNSFlyMlpuWU9wRldEMndmZm15OGYzbDNaeXJ2NTc3V2c0LzlOYklBMkQwSVAxOVQzTGZ6V3NIKzlSQWkzbm5XdUJHbk4wWVZ2dHRVRGJ4NDlxaTFwZUM2UWw3Q25VQ0pDajllMVFla213RG1wSlNGTWk3UDI3a1NLMHZoQU9BUzV5VllLZUF0UUczOExyUlpuOVJReDhIMEF6TTY3algxNXJ2VUNPc0Z2VUN3UTRnWWJndlh6MTV2ZjcwUEIrckRKOUYyZ0U2eksrTHUrMWFKdDF0N3RMTGJaTlIzd1JSaE5VZ0FKRzkvbTFyTnVpNWY4YTM2ZEdURlNBbVF1cDdYNitabHBYZzZ0b1h3Q0xHTmtGRWhtL0hhcXAxVG5EbVczVFNOdWZDeVlxd0VpMDlmbG5TYTBQNEphd0F1d3RoaTIwTzZXVXRrVlhOZ2NzWTBhQUZ1VzBwS3g3Q2Y2YXRkQWx4eGVsL1JFeEpFQVBvczE2dWZCSEc0YzE0UVNJc0xkOWhXampZMHFBSG1VMTh1d24wdWY0cmJRL0lzWUVhRVcwV2E2VWlPTmlUb0JXczB1cnl5TXMwK095QjB1enY0aEJBWG9SVFlKb3g1c2p0QURiV1M5S0tMYkhHYkgxV1RBcFFNc3lHL25raTdROWZtdnRqNGhSQVZvVGFUMFE3WExuSTh3SzBITzI4U3BCeitPeU9QdUxHQlpBcEc4cjVFMkNubjIvMWZDTDhJV1lSN3g0L2ZQUkpkTkxhRFQ4dE5KWlVpTFQrdnpCZEFVUWFULzdwTUpodFJxTUNML2wyVi9FZ1FBOWVQSDZwL21XS05YeU1QUGZZdVliWVVlTXVMUGNndWFXYUdUTFkzMzJGM0VrZ01oWUNVUjBpWkNyVUlSL0gxY0NpUFQ5N1RHTklvd092b2lmOElzNEUyREVEKy9sSkJBWks4TGVtbVJFcis5RkFqY0NqUDdWeVQwUlJQckljTFFRSDczSTlTQ0JDd0ZtL3VUcWtRZ0xaNFFvM1htYXVidGpYUUx6SDRUTi9yM2hkZmoyWkdpOWpjcVdaaHVvQUowb3JRdzFhQTI5NVNwQUJlakVOcXhuaE5BYStEV1d3eS9pUUFBcldBaHpSTXhmQ21GOUJyS08xZ3BjaW5rQnJKOEE2MWlmZ013TEFHMnhIdWhhd3UwQ3JVOHcxZU1QMitDWGpJMEhXVnhVZ05JVHNYMmNoeFBZZ3RRNEhJMk5sN0Z6VVFFV1VyUFcyNGZuOHU3K3grNEppMXdKdkFUNUxLNEV1RW9rRWFJSGZ3RUJFbmdXZ2VBL3hzVWFvRFZlUStMMXVLNUFCVGpBUXpVZytIa1FvQUpMTWhENk1oRGdCSnBGSVBoMUlNQkZOTWhBNk0rREFJMFpJUVNCYndjQ0RPQ0tGSVM5TDJ5RER1QnNpQWwvZnhBQVFvTUFFQm9FZ05BZ0FJUUdBUVpSdTZCbEFUd0dCQmpJMlMvdVFEOFFZREJSdm1sbEJRU1lRQzdraEg4OGR5SWlmQm9NVWFFQ1FHZ1FBRUtEQUJBYUJJRFFQQkVSK2ZiNTA5M3NOd0l3bW0rZlA5MVJBU0EwQ0FDaCtTMEFiUkJFWXNrN0ZRQkM4MGdBcWdCRVlKMXpLZ0NFNWtZQXFnQjRacHR2S2dDRUppa0FWUUE4a3NwMXRnSWdBWGdpbCtmZEZnZ0p3QU43T1dZTkFLRTVGSUFxQUpZNXltOVJCVUFDc0VoSmJvdGJJQ1FBUzVUbXRXb05nQVJnZ1pxY1ZpK0NrUUEwVTV2UFMySG1kaXFnaGJNVDg2VnRVS29CYU9CS0RpOS9Eb0FFTUpPcitXc2FYbG9pR0VXcmliZkw3STBJMEl2V0hVZlg5Z1VSb0JXOVd1MWgvVHN5UUMwajFwZi9BeUEzd2J0R3FQb3BBQUFBQUVsRlRrU3VRbUNDIiwic2l6ZXMiOiIxOTJ4MTkyIiwidHlwZSI6ImltYWdlL3BuZyJ9LHsic3JjIjoiZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFnQUFBQUlBQ0FZQUFBRDBlTlQ2QUFBWW0wbEVRVlI0bk8zZHE3WWMxUllHNEVvR0NoR0Jqa0lnb3pQd0NCNGd6NUJueWpQd0FCSDRERFF5QW9WR0lGQ01rU000blhSNjk2VXU2emJYL0Q1NTRPeXUzYXhhLzErenFucy9XNmpxNWF2WG4zb2ZBMEJVZi83KzI3UGV4ekFyYjJ3QlFoNmdQZVhnR0cvZVJzSWVZRnhLd1hyZXFBY0VQa0JjQ3NGdDNwZ0xBaDlnWGdyQkY5NklSZWdEWkpTOURLVCs1UVUvQUZtTFFMcGZXdWdEY0V1bU1wRG1GeFg4QUt5Vm9RaE0vd3NLZmdEMm1ya0lUUHVMQ1g0QVNwbXhDRXozQ3dsK0FHcVpxUWhNODRzSWZnQmFtYUVJaFA4RkJEOEF2VVF1QW1FUFhQQURNSXFJUmVCNTd3UFlRL2dETUpLSXVSU3FzVVI4Z3dISUpjbzBJTXdFUVBnREVFR1V2QXBSQUtLOG1RQ3dMREZ5YStneFJZUTNFQUR1R2ZXV3dMQVRBT0VQd0F4R3piTWhDOENvYnhZQTdERmlyZzAxbGhqeERRS0Fra2E1SlRETUJFRDRBNURCS0hrM1JBRVk1YzBBZ0JaR3lMM3VCV0NFTndFQVd1dWRmMTBMUU85ZkhnQjY2cG1EM1FxQThBZUFmbm5ZcFFBSWZ3RDRva2N1Tmk4QXdoOEFubXFkajAwTGdQQUhnTnRhNW1TekFpRDhBZUN4Vm5uWnBBQUlmd0JZcjBWdVZpOEF3aDhBdHF1ZG4xVUxnUEFIZ1AxcTVtaTFBaUQ4QWVDNFdubmEvYXVBQVlEMnFoUUFWLzhBVUU2TlhDMWVBSVEvQUpSWE9sK0xGZ0RoRHdEMWxNeFp6d0FBUUVMRkNvQ3Jmd0NvcjFUZUZpa0F3aDhBMmltUnU0Y0xnUEFIZ1BhTzVxOW5BQUFnb1VNRndOVS9BUFJ6SklkM0Z3RGhEd0Q5N2MxanR3QUFJS0ZkQmNEVlB3Q01ZMDh1bXdBQVFFS2JDNENyZndBWXo5WjhOZ0VBZ0lRMkZRQlgvd0F3cmkwNWJRSUFBQW10TGdDdS9nRmdmR3Z6MmdRQUFCSmFWUUJjL1FOQUhHdHkyd1FBQUJKNldBQmMvUU5BUEkveTJ3UUFBQks2V3dCYy9RTkFYUGR5M0FRQUFCSlNBQUFnb1pzRndQZ2ZBT0s3bGVjbUFBQ1EwTlVDNE9vZkFPWnhMZGROQUFBZ0lRVUFBQko2VWdDTS93RmdQcGY1YmdJQUFBa3BBQUNRa0FJQUFBbDlWUURjL3dlQWVaM252QWtBQUNTa0FBQkFRZ29BQUNUMHVRQzQvdzhBOHp2bHZRa0FBQ1NrQUFCQVFnb0FBQ1NrQUFCQVFzK1d4UU9BQUpETk43MFBBQ2pqbDdkL1YzK05OKzllVkg4Tm9BMjNBR0FDTGNLLzVlc0E5U2tBRUZ6clVGWUNZQTRLQUFUV0s0eVZBSWhQQVlDZ2VvZHc3OWNIamxFQUFDQ2g1ejRDQ0FENW1BQUFRRUlLQUFBa3BBQUFRRUlLQUFBa3BBQUFRRUlLQUFBa3BBQUFRRUlLQUFBa3BBQUFRRUlLQUFBa3BBQUFRRUlLQUFBa3BBQUFRRUlLQUFBa3BBQUFRRUlLQUFBa3BBQUFRRUlLQUFBazlPemxxOWVmZWg4RThOZ3ZiLy91ZlFpcnZYbjNvdmNoQUE4b0FEQ1lTRUcvbFdJQTQxQUFvS09adzM0dHBRRDZVQUNnSVlIL21FSUFiU2dBVUpIQVAwNGhnRG9VQUNoTTZOZWpERUE1Q2dBVUlQVGJVd2JnR0FVQWRoTDY0MUFHWURzRkFEWVErdU5UQm1BZEJRQWVFUHB4S1FOd213SUFOd2orZVNnQzhKUUNBQmNFLzd3VUFmaENBWUJGNkdla0RKQ2RBa0JxZ2g5RmdLd1VBRklTL0Z4U0JNaEdBU0FWd2M4amlnQlpLQUNrSVBqWlNoRmdkZ29BVXhQOEhEVlNFYmkzbmtjNlRtSlFBTmprVWFDT3RBa0pmMG9aWVYydldjOGpIQ2R4S0FDc3RqWlFlMjlDZ3A5YWVxM3RMV3U2OS9sSEhBb0FxMndOMVI2YmtPQ25sWmJyZTgrNlZnSllRd0hnb2IzQjJtb1RFdnowVW51TkgxbmJTZ0NQUE85OUFJenR5QWJVSXBpRlB6M1ZYSDlIZjdaemcwZE1BTGlwMUFaUzQwckU1c1pvU3E3emt1dmJKSUJiVEFDNHF1UUdWRHFzaFQ4aktyVXVuUyswWWdMQUU3VTJqS05YSWpZeW90aTcxbXV1Y1pNQUxwa0E4SlZSNzJrS2Z5TFpzMTVycjNIbkVKY1VBRDRiOWFFOUd4Y1JiVm0zcmRhNGM0bHpiZ0d3TEV2N2pXSE5PTkpteFN6dXJmY2U2OXp0QUpiRkJJQ2x6d2IwNkRXRlB6TzV0WjU3clhQbkY4dWlBS1RYY3lNWWJWT0VtaTdYZGU5MTN2djE2Yzh0Z01SRzJRQk80OGhSamdjeWNUc2dMd1VnS1dFTG5DZ0JPYmtGa0pEd0I4N1pFM0pTQUpKeG9nUFgyQnZ5VVFBQWNCc2dJUVVBQUJKU0FBQWdJUVVBQUJKU0FBQWdJUVVBQUJMNnB2Y0JBT1g5OVd2NVUvdTduLzR0L2pNWmcwOEE1T1NiQUJQeWVkODUxQWo1dlpTRHVJUi9YZ3BBVWtwQUhDTUYvVmFLd2RpRWYyNEtRR0pLd0pnaUIvNGpDc0U0aEQ4S1FISkt3QmhtRHYxYmxJRitoRC9Mb2dDd0tBRTlaQXo4UnhTQ05vUS9Kd29BeTdJb0FhMEkvc2NVZ1hxRVArY1VBRDVUQXVvUSt2c3BBK1VJZnk0cEFIeEZDU2hIOEplakNCd2ovTGxHQWVBSkpXQy9rVUwvN1IvZkZ2dFo3NzcvcDlqUE9rb1oyRWI0YzRzQ3dGVkt3RFk5Z3I5a3dCL1ZveUFvQW84SmYrNVJBTGhKQ1hpc1ZmQ1BGUFpydFNvRmlzQjF3cDlIRkFEdVVnS3VxeDM4RVFQL2tkcUZRQkg0UXZpemhnTEFRMHJBRnpXRGY4YlF2NlZtR2NoZUJJUS9heWtBckpLOUJOUUsva3loZjB1dE1wQzVDQ2dCcktFQXNFcm1BbEE2L0lYK2JhWExnQklBdDQzem1TVVlqT0J2Ny9RZWxTb0NwLytHbVlzQTNHSUN3RU1aci81TGhiL1FQNjVVR2NoWUFrd0J1RWNCNEs1czRTLzR4NlVJN0tNRWNJc0N3RTNDZnp2QlgxK0pJcUFFZ0djQVFQQUhVK0k1QWM4R2dBa0FOMlM1K2o4YS90R0MvK09IOXpmLzJROC8vdHp3U01vNU9oSElVZ0pNQWJqMHZQY0JNQjdoLzlqYlA3NE5GLzZ6T3ZyZllxUS80RlJUbHZPYTlSUUF2cEpoay9qcjEyOE9oei9qT1ZvQ01oU0JET2MzNjgyLzR1R000Si9iMGVjRC92cjFtelMzQk1BRWdNOW12enJZRy83Ry9mRWMrVzgyK3lSZzl2T2M5UlFBbG1XWmYxTTRFdjdFcFFSY04vdjV6am9LQU5NVC9ya3BBWENkRmM2MFZ3T0NuNU85endiTS9IMEJ2N3o5MjBjRGt6TUJTRTc0ZjAzNHo4MDA0R3V6bnYrc293QXdIZUhQUFVvQS9FY0JTR3pHOXI5bmsvYVVmejU3LzV2UFdBSm0zQWRZUndGZ0dudkRuN3lVQURKVEFKS2FyZlVMZi9aU0F1YmJEMWhIQVNBODRjOVJTZ0FaS1FBSnpkVDJoVCtsWkM4Qk0rMExyS01BSkpQOUpCZiszSk45ZldUZkg3SlJBQWhyNjlWWDlzMmRkYmF1azVtbUFPU2lBQ1F5VTdzWC90U1V1UVRNdEU5d253SkFPTUtmRmpLWEFISlFBSktZcGRVTGYxcktXZ0ptMlMrNFR3RWdET0ZQRDFsTEFQTlRBQkxJMk9hRlB5VmxYRThaOTQxc0ZBQkMySEpWbFhHenByNHQ2OG9VZ0FnVWdNbk4wT0tGUDZQSVZnSm0yRCs0VFFGZ2FNS2YwV1FyQWN4TEFaaVk5ZzRjWlIrWmx3TEFzRno5TXlwVEFHYWdBREFrNGMvb2xBQ2lVd0FtbFdWc0ovenBLY3Y2eTdLZlpLTUFNQnhYUzh6SXVtWTBDc0NFSXJkMW8zK2l5WElySVBLK3duVUtBQ0VKZjBaaVBSS1JBakNaeUMxOTdkV1J6WllSclYyWHBnQ01RZ0ZnQ0pFM1JkaktlbWNFQ2dDaHVQcG5aTllua1NnQUU0azZubk0xUkVaUjEzM1VmWWFuRkFEQ2NIVkZCTllwVVNnQWRPWEJQMmFVNFlGQTRsTUFKbUVzQjdSaXY1bURBa0EzcnY2Wm1Ta0FvMU1BQUNBaEJXQUNFY2R4cnY3SllPWXBRTVI5aDY4cEFBQ1FrQUpBYzY3K3lXVG1LUUN4S1FEQkdjT3h4UTgvL256em4zMzg4TDdoa1RBRCswOXNDZ0JEY3ZYUFRLeG5ScVFBMEpReEo5em0vS0FsQlNDd1djZHZycGFZMGF6cmV0WjlLQU1GZ0daYzNjQmp6aE5hVVFBQUlDRUZnS0hNT2lhRlpiRytHWXNDRUZTMCsyN0dtckJldFBNbDJuN0VmeFFBaHVIcWlBeXNjMGFoQUZCZHRLc1pHSUh6aHRvVUFBQklTQUVJYU1iN2JjYWlaRExqZXA5eFg1cWRBZ0FBQ1NrQVZPVStKdXpuL0tFbUJZRHVaaHlId2lQV1BiMHBBQUNRa0FJUVRLUUhiWXd2NGJoSTUxR2svUWtGZ002TVFjbk0rcWNuQlFBQUVsSUFBQ0FoQllBcUl0MjNoTkU1bjZoQkFhQWI5ei9CZVVBL0NrQWduckFGUm1lZmlrTUJBSUNFRkFCSTVPT0g5NGYrT1RBUFQ1YkE1TGFHK3ZtLy84T1BQNWMrSEdBUXoxNitldjJwOTBHd1RwUjdhMnVlV1BiZ1UzMGxyK1lWZ2ZyZWZmL1B3My9udTUvK2JYQWs0M256N2tYdlE1aVNDVUFsVWNLYU9aVWU1WC84OEY0Sm9KdGYzdjZ0QkZUZ0dZQUtoRCs5ZlB6d3Z0cDkvSm8vR3g2eHI1YW5BQlJta2RKTHEzQldBdWpGL2xxV0FsQ1F4VWt2clVOWkNhQVgrMnc1Q2tBaEZpVzk5QXBqSlFCaVV3QUFJQ0VGZ0tMODBaSzJlbCtGOTM3OWJKeGZsS1FBMEp6dkFDaGpsUEFkNVRpaWMxN1FtZ0lBQUFrcEFCRFFhRmZkb3gwUDhKZ0NBQUFKS1FBQWtKQUNBTUdNT200ZjliaUE2eFFBQUVoSUFRQ0FoQlFBQUVoSUFRQ0FoQlFBQUVoSUFRQ0FoQlFBQUVoSUFRQ0FoQlFBQ09hSEgzL3VmUWhYalhwY3dIVUtBQUFrcEFBQVJmZ3FZSWpsbTk0SEFLdzNlc2llanMvdEFCaWZBZ0FCakI3OGx4UUJHSjliQURUMzd2dC9laDlDR0I4L3ZBOFgvdWNpSDN0cnpndGFVd0FvNnJ1Zi91MTlDTk9ZSlR5amw1aVJPTDhveVMwQUdNeXNZZW0yQUNXOGVmZWk5eUZNd3dTZ0VJdVNvL1plS1VjTFZCTUI5ckxQbHFVQUZHUnhzc2VSNEQrRmYrc1NjSHJ0STYrckJMQ0YvYlU4QmFBd2k1UXRqZ2IvNWYvZXd1WHJIQ2tDcGdHc1lWK3Q0OW5MVjY4LzlUNklHZjN5OXUvZWg5RE5YNzgrZnJUazdSL2ZOamlTY2RVZTlkY0kxVFd2Zi9SMW85M09LR25OcHdDaVBBUW9zR1B3RUdBbE5VNkF6S1ZpRm5zRGNtc3cvdkRqejBWTHdOclhQLzE3ZTEvNzQ0ZjNxVXNBdEdRQ0VFaWtBbUFLOExWV3dWL3l0VXU4ZnMvWGptU21xLzlsTVFHSXdnUUFLdXY5WlAvNXoxcHpMRFZlZTg5NzRHT0RVSmNDQUpYMER2NGVQLy9lNng2NUxYRDZHVUE1UGdVQWhXWDVQUDlXUGpZSVl6RUJDT1ROdXhlaG5nUElwdWQ5L2tqY0ZwaWIrLzl4bUFEUXpVeC8vS1RrNS9tek9Eb05tR1VpTU5ONVFDd21BRlR4M1UvL3J2b2tRSFJHL2NmNDJPQTZrVDRCUUJ6ejc5QlFnWEYvV1c0TFFIc0tBR3dnK090U0JLQWR6d0RRVmFUN24rN3p0NVBsK1lCSTY1LzUrQ2JBZ0NKOUVtQ0did1Iwbjcrdm1iOU4wRGNBMHBOYkFIQ0RjZjhZM0JhQU9oUUF1bnYzL1Q5RFRRRUUvNWhtK3paQjQzOTZVd0NvS3RySEFZMzd4MWJpWTRQblAyZDBrY2IveEJOblo0YUtCSDhzdmo4QWp2TVFZRkN6UFFpNExIMGVCalR1bjBPMEJ3WFhqdjhqVFFBOEFCaVBDUUFwQ2Y2NXpQWjhBTFRnZXdDb2JyU3JHSi9ubjlOc2YyMXd0UE9HK1pnQU1JemFud1p3bnorSDBUODI2T2wvUnVFWmdNQWlQUWV3TFAyK0ZNaTRQN2ZSbmcrWTdjdC9sc1g5LzZoTUFCaEt5U21BNEdkWnhubyt3TlUvSS9FTUFGTnluNTl6c3owZkFDV1lBTkJNaXk4RmNwK2ZlMFovUG1CWjRvMy9pY3NFSUxCWjc3dTFISk1LLzV6Mi9uYy9zbDVtSGYvUHVnOWxvQURRVk8ycm03VWJ0SEUvSTY0QlYvKzA1QllBUTZyMWtjRFJObno2VzN0YndOVS9zekVCQ003NGJaMFJyL1lZeTcwMVl1MWNaLytKVFFHZ3ViVmp6cjFYVFplYnRjMmJMVXF2bHhtLzk1ODV1QVhBdEFRL2U1M2ZGckNPbUpWdkFweEV0RzhGWEpheC8wb2dsRER6MWIveGYzeHVBUUJBUWdvQTNkUitGZ0I2bXZucW56a29BSk13amdOYXNkL01RUUdnSzFNQVp1VHFud2dVQU1KUUFvakFPaVVLQldBaVVjZHlyb0xJS09xNmo3clA4SlFDUUNpdXJoaVo5VWtrQ2dCRGlIbzFCSHRZNzR4QUFaaE01UEdjQndLSkxNT0RmNUgzRjU1U0FBaEpDV0FrMWlNUktRQVRpdHpTdDF3ZDJYUVp3WloxNk9xZmtTZ0FEQ2Z5SmdtM1dOZU1SZ0dZVkphMmJncEFUMW5XWDViOUpCc0ZnQ0c1RmNEb3NveittWmNDd0xDVUFFWWwvSm1CQWpBeFl6dmdLUHZJdkJRQWhtWUt3R2hjL1RNTEJXQnlNN1IzSllCUlpBdi9HZllQYmxNQUNFRUpvTGRzNGMvOEZJQUVNclo0SllDU01xNm5qUHRHTmdvQVlXeTlxc3E0YVZQZTFuWGs2cDhvRklBa1ptbnpTZ0F0WlEzL1dmWUw3bE1BQ0VjSm9JV3M0VThlQ2tBaU03VjZKWUNhTW9mL1RQc0U5eWtBaEtVRVVFUG04Q2NYQlNDWjdPMWVDZUNlN09zaisvNlFqUUtRMEV3bitaNnJyK3liUE5mdFdSY3pYZjNQdEMrd2pnSkFlRW9BUjJVUGYzSlNBSkthcmUwckFld2wvT2ZiRDFoSEFXQWFTZ0JiQ1g4eWUvYnkxZXRQdlErQ2ZuNTUrM2Z2UXlqdXIxKy8yZlgvZS92SHQ0V1BoRkh0TFg0emhyK3IvN3hNQUpqTzNrM2FOQ0FINFEvL1VRQ1NtN1g5S3dGY0kveS9OdXY1enpwdUFiQXN5NXkzQWs3Y0VrRHdQeVg4TVFGZ2VxWUJ1UWwvdUU0QllGbVcrYThHbElDY2hQOTFzNS92ck9NV0FGK1orVmJBc3V5L0hiQXNiZ2xFY3FTNENYK3kyTDhiUWtEZi9mVHY3aEp3Q2hWRllGeEhKemF6aHorY013SGdpZG1uQUNlbUFYTngxZitZcTMvT0tRQmNwUVNzb3dqMDU2cC9IZUhQSlFXQW01U0E5UlNCOWtvOG9Dbjh5Y3d6QUtSM0NvRWpSY0R6QWUwSWZpakRCSUM3c2t3QlRrcE1BNVpGRWFpaDFFY3lzNFcvcTM5dVVRQjRLRnNKV0JaRllDU0Nmei9oenowS0FLc29BY2NwQSt1Vi9nSW00UTlQZVFZQWJpanhiTUE1endrOEp2aWhIUk1BVnNzNEJUZ3BQUTA0VVFicWZkMXk1dkIzOWM4YUNnQ3JaQTcvYzdXS3dMTGtLZ00xLzhaQzV1QS9wd1R3aUFMQVE4TC9xWnBGWUZubUxBTzEvN0NTNEg5S0NlQWVCWUM3aFA5OXRZdkFTY1JDME9vdktRcisrNVFBYmxFQXVFbjRyOWVxQ0p3YnFSVDArTFBKZ244OUpZQnJGQUN1RXY3NzlDZ0N0NVFzQ0QwQy9oYkJ2NDhTd0NVRmdDZUVmeGtqbFlIb2hINFpTZ0RuRkFDK0l2ekxVd1QyRS96bEtRR2NLQUI4SnZ6clV3WWVFL3IxS1FFc2l3TEEvd24vdGhTQnB3Ui9XMG9BQ2dEQ2Z3QVpDNEhBNzA4SnlFMEJTRTc0ajJmbU1pRDB4Nk1FNUtVQUpDYjhZNGhjQ0FSK0RFcEFUZ3BBVXNJL3ZwR0tnYUNQVHduSVJ3RklTUGpQcjBZNUVQTHpVd0p5R2VjU0FpaEdXQU9QUE85OUFBQkFld29BQUNTa0FBQkFRZ29BQUNTa0FBRGdFd0FKS1FBSk9kR0JjL2FFbkJTQXBKend3TExZQ3pKVEFCSno0a051OW9EY0ZJRGtSdGtBUmprT2FPSE51eGZkMTN6djE2Yy9Yd1hNc2l4OXZ4NzRjaVB5VmNYTTZscm85bGp2d3A5bE1RSGcvM3B0Q05kZTErYkVqRzZ0NjlicjNmbkZpUUxBWnlOdFJEWXBadkpvUGJkYTc4NHJ6cmtGd0JNdFJwSmJOaUszQklocWErRFdYT3ZDbjBzbUFEeFJlNlBZK3ZOdFhFUzBaOTNXV3V2T0lhNVJBTGhxdEkzSUJrWWtSOVpyNmJYdTNPRVd0d0M0cStSSXN0Ukc1SllBb3lvWnRpWFd1ZkRuSGhNQTdpcTFnWlRjaUd4cWpHaTBLM2ZuQ1krWUFMREtrYXVSbWh1UmFRQzkxUTdhUFd0YytMT0dDUUNyakhydjNrWkhUeTNXbjRkbXFjVUVnRTIyWEkyMDNvaE1BMmlsUjhpdVdkL0NueTBVQURZYmZTTlNCS2lsZDhEZVc5dTlqNDE0RkFCMmliQVJLUUtVTXNxYWhwSVVBS2FtQkhDVThHZFdDZ0FwS0FKc0pmaVpuUUpBS29vQWp3aCtzbEFBU0VrUjRKTGdKeHNGZ05RVUFRUS9XU2tBc0NnQ0dRbCtzbE1BNElJeU1DK2hEMThvQUhDRElqQVB3UTlQS1FEd2dDSVFsK0NIMnhRQTJFQVpHSi9RaDNVVUFOaEpHUmlIMElmdEZBQW9RQmxvVCtqRE1Rb0FGS1lNMUNQMG9Sd0ZBQ3BTQm80VCtsQ0hBZ0FOS1FTUENYeG9Rd0dBamhRQ2dRKzlLQUF3bUpsTGdiQ0hjU2dBRUVTa1lpRG9ZWHdLQUFRMlFpa1E5aERUODk0SEFBQzBwd0FBUUVJS0FBQWtwQUFBUUVJS0FBQWtwQUFBUUVJS0FBQWtwQUFBUUVJS0FBQWtwQUFBUUVJS0FBQWtwQUFBUUVJS0FBQWtwQUFBUUVJS0FBQWtwQUFBUUVJS0FBQWtwQUFBUUVMUC8vejl0MmU5RHdJQWFNc0VBQUo3OCs1RjZ0Y0g5bE1BSUxoZUlTejhJVFlGQUNiUU9veUZQOFNuQU1Ba1dvV3k4SWM1UEZ1V1pYbjU2dlduM2djQ0FMUmpBZ0FBQ1QxZmxtWHhVVUFBeU9QUDMzOTdaZ0lBQUFrcEFBQ1FrQUlBQUFrcEFBQ1EwT2NDNEVGQUFKamZLZTlOQUFBZ0lRVUFBQkpTQUFBZ29hOEtnT2NBQUdCZTV6bHZBZ0FBQ1NrQUFKQ1FBZ0FBQ1QwcEFKNERBSUQ1WE9hN0NRQUFKS1FBQUVCQ1Z3dUEyd0FBTUk5cnVXNENBQUFKM1N3QXBnQUFFTit0UERjQkFJQ0VGQUFBU09odUFYQWJBQURpdXBmakpnQUFrTkREQW1BS0FBRHhQTXB2RXdBQVNHaFZBVEFGQUlBNDF1UzJDUUFBSkxTNkFKZ0NBTUQ0MXVhMUNRQUFKTFNwQUpnQ0FNQzR0dVMwQ1FBQUpMUzVBSmdDQU1CNHR1YXpDUUFBSkxTckFKZ0NBTUE0OXVTeUNRQUFKTFM3QUpnQ0FFQi9lL1A0MEFSQUNRQ0Fmbzdrc0ZzQUFKRFE0UUpnQ2dBQTdSM04zeUlUQUNVQUFOb3BrYnZGYmdFb0FRQlFYNm04OVF3QUFDUlV0QUNZQWdCQVBTVnp0dmdFUUFrQWdQSks1MnVWV3dCS0FBQ1VVeU5YUFFNQUFBbFZLd0NtQUFCd1hLMDhyVG9CVUFJQVlMK2FPVnI5Rm9BU0FBRGIxYzdQSnM4QUtBRUFzRjZMM0d6MkVLQVNBQUNQdGNyTHBwOENVQUlBNExhV09kbjhZNEJLQUFBODFUb2Z1M3dQZ0JJQUFGLzB5TVZ1WHdTa0JBQkF2enpzK2syQVNnQUFtZlhNd2U1ZkJhd0VBSkJSNy96clhnQ1dwZitiQUFBdGpaQjdReFNBWlJuanpRQ0Eya2JKdXlFTzR0TExWNjgvOVQ0R0FDaHBsT0EvR1dZQ2NHNjBOd2tBamhneDE0WXNBTXN5NXBzRkFGdU5tbWRESHRRbHR3UUFpR2JVNEQ4WmRnSndidlEzRVFET1JjaXRFQVZnV1dLOG1RQVFKYTlDSE9RbHR3UUFHRTJVNEQ4Sk13RTRGKzFOQm1CdUVYTXAzQUZmTWcwQW9KZUl3WDhTOXNBdktRSUF0Qkk1K0UvQy93S1hGQUVBYXBraCtFK20rVVV1S1FJQWxESlQ4SjlNOXd0ZFVnUUEyR3ZHNEQrWjloZTdwQWdBc05iTXdYOHkvUzk0U1JFQTRKWU13WCtTNWhlOVJoa0FJRlBvbjB2NVMxOVNCQUR5eVJyOEo2bC8rV3VVQVlCNVpRLzljOTZJQnhRQ2dMZ0UvbTNlbUkwVUFvQnhDZnoxdkZFRktBVUE3UW43WS80SFZGN0hPRzRkMzU4QUFBQUFTVVZPUks1Q1lJST0iLCJzaXplcyI6IjUxMng1MTIiLCJ0eXBlIjoiaW1hZ2UvcG5nIn1dfQ==">
+
+<style>
+  :root{
+    --ink:#1b2430;
+    --paper:#f6f4ef;
+    --steel:#3c5a6b;
+    --steel-dark:#2a4150;
+    --rust:#b5502e;
+    --brass:#c7952a;
+    --green:#3e6b4a;
+    --line:#d9d4c8;
+    --card:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    -webkit-tap-highlight-color:transparent;
+  }
+  header{
+    background:var(--steel-dark);
+    color:#fff;
+    padding:14px 16px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:sticky;
+    top:0;
+    z-index:20;
+  }
+  header h1{
+    font-size:17px;
+    margin:0;
+    font-weight:700;
+    letter-spacing:0.3px;
+  }
+  #status{
+    font-size:11px;
+    padding:4px 9px;
+    border-radius:20px;
+    font-weight:600;
+  }
+  .st-online{background:#2e5d3d;}
+  .st-offline{background:var(--rust);}
+  .st-syncing{background:var(--brass); color:#3a2a00;}
+
+  nav{
+    display:flex;
+    background:var(--card);
+    border-bottom:1px solid var(--line);
+    position:sticky;
+    top:48px;
+    z-index:19;
+  }
+  nav button{
+    flex:1;
+    padding:12px 4px;
+    background:none;
+    border:none;
+    font-size:13px;
+    font-weight:600;
+    color:#7a8590;
+    border-bottom:3px solid transparent;
+    cursor:pointer;
+  }
+  nav button.active{
+    color:var(--steel-dark);
+    border-bottom-color:var(--rust);
+  }
+
+  main{
+    padding:14px;
+    max-width:720px;
+    margin:0 auto;
+    padding-bottom:80px;
+  }
+  .view{display:none;}
+  .view.active{display:block;}
+
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:14px;
+    margin-bottom:12px;
+  }
+
+  /* SELL VIEW */
+  #search{
+    width:100%;
+    padding:12px;
+    font-size:15px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    margin-bottom:12px;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+    gap:10px;
+  }
+  .item-btn{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:12px;
+    text-align:left;
+    cursor:pointer;
+    transition:transform .06s ease;
+    position:relative;
+  }
+  .item-btn:active{transform:scale(0.96);background:#eef2f0;}
+  .item-btn.low{
+    border-color:var(--rust);
+    animation:lowGlow 1.8s ease-in-out infinite;
+  }
+  @keyframes lowGlow{
+    0%,100%{box-shadow:0 0 0 0 rgba(181,80,46,0.0);}
+    50%{box-shadow:0 0 0 5px rgba(181,80,46,0.18);}
+  }
+
+  #idle-screen{padding:20px 4px 10px;}
+  #idle-hero{
+    text-align:center;padding:34px 16px;
+    background:linear-gradient(160deg, var(--steel-dark), #1c2e38);
+    border-radius:16px;color:#fff;
+  }
+  #idle-hero-icon{font-size:44px;margin-bottom:6px;}
+  #idle-hero h1{margin:0;font-size:22px;letter-spacing:0.2px;}
+  #idle-hero p{margin:6px 0 0;font-size:13px;color:#c9d3d8;}
+  #resume-orders{margin-top:16px;}
+  .resume-card{
+    background:var(--card);border:1px solid var(--line);border-radius:10px;
+    padding:12px 14px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;
+    cursor:pointer;
+  }
+  .resume-card .r-info b{font-size:14px;}
+  .resume-card .r-info div{font-size:12px;color:#7a8590;margin-top:2px;}
+  .resume-card .r-discard{background:none;border:none;color:var(--rust);font-size:12px;font-weight:700;padding:6px;}
+
+  #order-tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;margin-bottom:6px;}
+  .order-tab{
+    flex-shrink:0;padding:8px 14px;border-radius:20px;border:1px solid var(--line);
+    background:var(--card);font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;
+  }
+  .order-tab.active{background:var(--steel-dark);color:#fff;border-color:var(--steel-dark);}
+  .order-tab.new-tab{color:var(--rust);border-color:var(--rust);}
+  .item-name{font-weight:700;font-size:14px;margin-bottom:4px;}
+  .item-meta{font-size:12px;color:#7a8590;}
+  .item-price{font-weight:700;color:var(--steel-dark);margin-top:6px;font-size:15px;}
+  .badge-low{
+    position:absolute;top:8px;right:8px;
+    background:var(--rust);color:#fff;
+    font-size:10px;padding:2px 6px;border-radius:10px;font-weight:700;
+  }
+  .empty{color:#7a8590;text-align:center;padding:40px 10px;font-size:14px;}
+
+  /* CART */
+  #cart-bar{
+    position:fixed;bottom:0;left:0;right:0;
+    background:var(--steel-dark);color:#fff;
+    padding:12px 16px;
+    display:none;
+    align-items:center;
+    justify-content:space-between;
+    z-index:25;
+  }
+  #cart-bar.show{display:flex;}
+  #cart-bar button{
+    background:var(--rust);color:#fff;border:none;
+    padding:10px 18px;border-radius:8px;font-weight:700;font-size:14px;
+  }
+
+  /* INVENTORY */
+  .inv-row{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:10px 0;border-bottom:1px solid var(--line);
+    gap:8px;
+  }
+  .inv-row:last-child{border-bottom:none;}
+  .inv-info{flex:1;min-width:0;}
+  .inv-info b{font-size:14px;}
+  .inv-info div{font-size:12px;color:#7a8590;}
+  .inv-qty{font-weight:700;font-size:15px;min-width:40px;text-align:right;}
+  .inv-qty.low{color:var(--rust);}
+  .icon-btn{
+    background:none;border:1px solid var(--line);border-radius:6px;
+    padding:6px 9px;font-size:13px;cursor:pointer;
+  }
+
+  form label{
+    display:block;font-size:12px;font-weight:600;margin:10px 0 4px;color:#5a6570;
+  }
+  form input, form select{
+    width:100%;padding:10px;border:1px solid var(--line);border-radius:7px;font-size:14px;
+  }
+  .btn-primary{
+    background:var(--steel-dark);color:#fff;border:none;
+    padding:12px;border-radius:8px;font-weight:700;width:100%;margin-top:14px;cursor:pointer;
+    font-size:14px;
+  }
+  .btn-secondary{
+    background:none;border:1px solid var(--line);color:var(--ink);
+    padding:12px;border-radius:8px;font-weight:600;width:100%;margin-top:8px;cursor:pointer;
+  }
+
+  /* REPORTS */
+  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+  .stat{
+    background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px;
+  }
+  .stat .n{font-size:20px;font-weight:800;color:var(--steel-dark);}
+  .stat .l{font-size:11px;color:#7a8590;text-transform:uppercase;letter-spacing:0.4px;margin-top:2px;}
+  .rank-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;}
+  .rank-row:last-child{border-bottom:none;}
+  .sectiontitle{font-size:13px;font-weight:700;color:#5a6570;text-transform:uppercase;letter-spacing:0.4px;margin:18px 0 8px;}
+
+  .modal-bg{
+    display:none;position:fixed;inset:0;background:rgba(20,25,30,0.5);
+    z-index:30;align-items:flex-end;justify-content:center;
+  }
+  .modal-bg.show{display:flex;}
+  .modal{
+    background:var(--paper);width:100%;max-width:480px;
+    border-radius:16px 16px 0 0;padding:18px;max-height:88vh;overflow-y:auto;
+  }
+  .modal h2{margin:0 0 6px;font-size:17px;}
+  .close-x{float:right;background:none;border:none;font-size:20px;cursor:pointer;color:#7a8590;}
+
+  #setup-banner{
+    background:#fff3e0;border:1px solid var(--brass);color:#5a4200;
+    padding:10px 12px;border-radius:8px;font-size:12.5px;margin-bottom:12px;line-height:1.5;
+  }
+  #setup-banner code{background:#00000010;padding:1px 5px;border-radius:4px;}
+
+  #login-screen{
+    position:fixed;inset:0;background:var(--paper);z-index:100;
+    display:flex;align-items:center;justify-content:center;padding:20px;
+  }
+  #login-screen.hide{display:none;}
+  .login-box{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:24px 20px;width:100%;max-width:360px;
+  }
+  .login-box h2{margin:0 0 4px;font-size:19px;}
+  .login-box p{margin:0 0 16px;font-size:13px;color:#7a8590;}
+  #login-error{color:var(--rust);font-size:13px;margin-top:8px;display:none;}
+  #logout-btn{
+    background:none;border:1px solid rgba(255,255,255,0.3);color:#fff;
+    padding:5px 10px;border-radius:6px;font-size:12px;margin-left:8px;cursor:pointer;
+  }
+  .admin-only{display:none;}
+  body.role-admin .admin-only{display:block;}
+  nav button.admin-only{display:none;}
+  body.role-admin nav button.admin-only{display:block;}
+  .owner-only{display:none !important;}
+  body.role-owner .owner-only{display:block !important;}
+  .cashier-only{display:none !important;}
+  body.role-cashier .cashier-only{display:block !important;}
+</style>
+</head>
+<body>
+
+<div id="login-screen">
+  <div class="login-box">
+    <h2>⚙ Parts Shop POS</h2>
+    <p>Sign in with the account your admin set up for you.</p>
+    <form id="login-form">
+      <label style="font-size:12px;font-weight:600;color:#5a6570;">Email</label>
+      <input id="login-email" type="email" required style="width:100%;padding:10px;border:1px solid var(--line);border-radius:7px;margin:4px 0 10px;font-size:14px;">
+      <label style="font-size:12px;font-weight:600;color:#5a6570;">Password</label>
+      <input id="login-password" type="password" required style="width:100%;padding:10px;border:1px solid var(--line);border-radius:7px;margin:4px 0;font-size:14px;">
+      <div id="login-error"></div>
+      <button type="submit" class="btn-primary" id="login-submit-btn">Sign In</button>
+      <button type="button" class="btn-secondary" id="login-toggle-btn">Need an account? Create one</button>
+    </form>
+  </div>
+</div>
+
+<!-- PENDING / REVOKED SCREEN -->
+<div id="pending-screen" style="display:none;position:fixed;inset:0;background:var(--paper);z-index:99;align-items:center;justify-content:center;padding:20px;">
+  <div class="login-box" style="text-align:center;">
+    <div style="font-size:34px;margin-bottom:8px;">⏳</div>
+    <h2 id="pending-title">Waiting for approval</h2>
+    <p id="pending-text">Your account has been created. An admin needs to approve your access before you can use the app.</p>
+    <button class="btn-secondary" id="pending-logout-btn">Sign Out</button>
+  </div>
+</div>
+
+<header>
+  <h1>⚙ Parts Shop POS</h1>
+  <span>
+    <span id="status" class="st-offline">Connecting…</span>
+    <button id="logout-btn">Sign Out</button>
+  </span>
+</header>
+
+
+<nav>
+  <button class="tab admin-only" data-view="dashboard">Dashboard</button>
+  <button class="tab active" data-view="sell">Sell</button>
+  <button class="tab" data-view="inventory">Inventory</button>
+  <button class="tab admin-only" data-view="reports">Reports</button>
+</nav>
+
+<main>
+
+  <div id="setup-banner" style="display:none;"></div>
+
+
+  <!-- DASHBOARD VIEW (Admin/Owner landing) -->
+  <div class="view" id="view-dashboard">
+    <div class="stat-grid">
+      <div class="stat"><div class="n" id="dash-revenue">—</div><div class="l">Revenue Today</div></div>
+      <div class="stat"><div class="n" id="dash-profit">—</div><div class="l">Profit Today</div></div>
+      <div class="stat"><div class="n" id="dash-orders">—</div><div class="l">Orders Today</div></div>
+      <div class="stat" id="dash-lowstock-card" style="cursor:pointer;"><div class="n" id="dash-lowstock">—</div><div class="l">Low Stock Items</div></div>
+    </div>
+
+    <div id="dash-pending-section" style="display:none;">
+      <div class="sectiontitle">Needs Your Attention</div>
+      <div class="card" id="dash-pending-list"></div>
+    </div>
+
+    <div class="sectiontitle">Trends</div>
+    <div class="card"><canvas id="chart-revenue" height="160"></canvas></div>
+    <div class="card"><canvas id="chart-topsellers" height="160"></canvas></div>
+    <div class="card"><canvas id="chart-pricing-split" height="160"></canvas></div>
+
+    <div class="sectiontitle">Quick Actions</div>
+    <div class="card" style="display:flex;flex-direction:column;gap:8px;">
+      <button class="btn-secondary" data-quickview="sell" style="margin:0;">Start a Sale</button>
+      <button class="btn-secondary" id="dash-receive-stock-btn" style="margin:0;">Receive Stock</button>
+      <button class="btn-secondary" id="dash-pricesheet-btn" style="margin:0;">Price Sheet (Spreadsheet View)</button>
+      <button class="btn-secondary" data-quickview="reports" style="margin:0;">Full Reports</button>
+      <button class="btn-secondary owner-only" id="dash-manageteam-btn" style="margin:0;display:none;">Manage Team</button>
+    </div>
+  </div>
+
+  <!-- SELL VIEW -->
+  <div class="view active" id="view-sell">
+
+    <!-- IDLE / HOME SCREEN (shown when no order is open) -->
+    <div id="idle-screen">
+      <div id="idle-hero">
+        <div id="idle-hero-icon">🏍️</div>
+        <h1 id="idle-shop-name">Parts Shop POS</h1>
+        <p id="idle-tagline">Motorbike Parts · Sales &amp; Inventory</p>
+      </div>
+      <button class="btn-primary" id="start-sale-btn" style="max-width:320px;margin:18px auto 0;display:block;">+ Start New Sale</button>
+      <div id="resume-orders"></div>
+    </div>
+
+    <!-- ACTIVE ORDER SCREEN -->
+    <div id="order-screen" style="display:none;">
+      <div id="order-tabs"></div>
+      <input id="search" type="text" placeholder="Search parts…">
+      <select id="category-filter" style="width:100%;padding:11px;margin-bottom:12px;border:1px solid var(--line);border-radius:8px;font-size:14px;">
+        <option value="">All Categories</option>
+      </select>
+      <div class="grid" id="sell-grid"></div>
+      <div class="empty" id="sell-empty" style="display:none;">No items yet — add stock in the Inventory tab.</div>
+    </div>
+  </div>
+
+  <!-- INVENTORY VIEW -->
+  <div class="view" id="view-inventory">
+    <button class="btn-primary admin-only" id="add-item-btn">+ Add New Part</button>
+    <button class="btn-primary cashier-only" id="request-stock-btn" style="display:none;">Request to Add Stock</button>
+    <div class="card" style="margin-top:12px;">
+      <div id="inv-list"></div>
+      <div class="empty" id="inv-empty" style="display:none;">No parts added yet.</div>
+    </div>
+  </div>
+
+  <!-- REPORTS VIEW -->
+  <div class="view" id="view-reports">
+    <div class="stat-grid">
+      <div class="stat"><div class="n" id="stat-revenue">—</div><div class="l">Revenue (30d)</div></div>
+      <div class="stat"><div class="n" id="stat-profit">—</div><div class="l">Profit (30d)</div></div>
+      <div class="stat"><div class="n" id="stat-sales">—</div><div class="l">Sales (30d)</div></div>
+      <div class="stat"><div class="n" id="stat-lowstock">—</div><div class="l">Low Stock Items</div></div>
+    </div>
+
+    <div class="card">
+      <div class="sectiontitle">Fastest Movers (30d)</div>
+      <div id="fast-movers"></div>
+    </div>
+    <div class="card">
+      <div class="sectiontitle">Slowest / Dead Stock</div>
+      <div id="slow-movers"></div>
+    </div>
+    <div class="card">
+      <div class="sectiontitle">Low Stock — Reorder Soon</div>
+      <div id="low-stock-list"></div>
+    </div>
+  </div>
+
+</main>
+
+<div id="cart-bar">
+  <span id="cart-summary">0 items</span>
+  <button id="cart-checkout">Review &amp; Take Payment</button>
+</div>
+
+<!-- QUANTITY PICKER MODAL -->
+<div class="modal-bg" id="qty-modal">
+  <div class="modal" style="max-width:340px;">
+    <button class="close-x" data-close="qty-modal">&times;</button>
+    <h2 id="qty-modal-name">Item</h2>
+    <p style="font-size:13px;color:#7a8590;margin:0 0 14px;" id="qty-modal-stock"></p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin:10px 0 18px;">
+      <button type="button" id="qty-minus" style="width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card);font-size:20px;font-weight:700;">−</button>
+      <input id="qty-input" type="number" min="1" value="1" style="width:70px;text-align:center;font-size:20px;font-weight:700;padding:8px;border:1px solid var(--line);border-radius:8px;">
+      <button type="button" id="qty-plus" style="width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card);font-size:20px;font-weight:700;">+</button>
+    </div>
+    <div id="qty-price-preview" style="text-align:center;font-size:14px;margin-bottom:14px;color:#5a6570;"></div>
+    <button class="btn-primary" id="qty-confirm-btn">Add to Order</button>
+    <button type="button" class="btn-secondary" id="qty-override-btn" style="font-size:12px;">Request Different Price</button>
+  </div>
+</div>
+
+<!-- ADD/EDIT ITEM MODAL -->
+<div class="modal-bg" id="item-modal">
+  <div class="modal">
+    <button class="close-x" data-close="item-modal">&times;</button>
+    <h2 id="item-modal-title">Add Part</h2>
+    <form id="item-form">
+      <input type="hidden" id="item-id">
+      <label>Part Name</label>
+      <input id="f-name" required placeholder="e.g. Front Brake Pad Set">
+      <label>Brand</label>
+      <input id="f-brand" list="brand-list" placeholder="e.g. Honda, Yamaha, Generic">
+      <datalist id="brand-list"></datalist>
+      <label>Category</label>
+      <select id="f-category">
+        <option value="">Uncategorized</option>
+        <option>Engine</option>
+        <option>Brakes</option>
+        <option>Electrical</option>
+        <option>Suspension</option>
+        <option>Tyres &amp; Wheels</option>
+        <option>Body &amp; Frame</option>
+        <option>Transmission &amp; Chain</option>
+        <option>Exhaust</option>
+        <option>Lighting</option>
+        <option>Oils &amp; Fluids</option>
+        <option>Accessories</option>
+        <option>Other</option>
+      </select>
+      <label>SKU / Code (optional)</label>
+      <input id="f-sku" placeholder="e.g. BP-1023">
+      <label>Dealer / Supplier</label>
+      <input id="f-dealer" list="dealer-list" placeholder="e.g. Nairobi Motor Spares Ltd">
+      <datalist id="dealer-list"></datalist>
+      <label>Dealer Phone (for WhatsApp reorder alerts)</label>
+      <input id="f-dealer-phone" type="tel" placeholder="e.g. 0712345678">
+      <label>Dealer Email (for email reorder alerts)</label>
+      <input id="f-dealer-email" type="email" placeholder="e.g. sales@dealer.com">
+      <label>Cost Price (what you paid)</label>
+      <input id="f-cost" type="number" step="0.01" min="0" required>
+      <label>Retail Sell Price</label>
+      <input id="f-price" type="number" step="0.01" min="0" required>
+      <label>Wholesale Sell Price (optional)</label>
+      <input id="f-wholesale-price" type="number" step="0.01" min="0" placeholder="Leave blank to use retail price">
+      <label>Wholesale Applies At Quantity</label>
+      <input id="f-wholesale-threshold" type="number" step="1" min="1" placeholder="Default: 5">
+      <label>Quantity in Stock</label>
+      <input id="f-qty" type="number" step="1" min="0" required>
+      <label>Reorder Alert Level</label>
+      <input id="f-reorder" type="number" step="1" min="0" value="3">
+      <button type="submit" class="btn-primary">Save Part</button>
+      <button type="button" class="btn-secondary" id="delete-item-btn" style="display:none;color:var(--rust);">Delete Part</button>
+    </form>
+  </div>
+</div>
+
+<!-- CHECKOUT CONFIRM MODAL -->
+<div class="modal-bg" id="checkout-modal">
+  <div class="modal">
+    <button class="close-x" data-close="checkout-modal">&times;</button>
+    <h2>Confirm Order</h2>
+    <div id="checkout-list" style="font-size:14px;margin:10px 0;"></div>
+    <div style="font-weight:800;font-size:16px;margin-top:10px;" id="checkout-total"></div>
+    <label style="display:block;font-size:12px;font-weight:600;margin:14px 0 4px;color:#5a6570;">Customer name (optional)</label>
+    <input id="checkout-customer" placeholder="Walk-in" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:7px;font-size:14px;">
+    <label style="display:block;font-size:12px;font-weight:600;margin:12px 0 4px;color:#5a6570;">Customer phone (optional, for receipt)</label>
+    <input id="checkout-phone" type="tel" placeholder="e.g. 0712345678" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:7px;font-size:14px;">
+    <label style="display:block;font-size:12px;font-weight:600;margin:12px 0 4px;color:#5a6570;">Payment Method</label>
+    <select id="checkout-payment" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:7px;font-size:14px;">
+      <option>Cash</option>
+      <option>M-Pesa</option>
+      <option>Card</option>
+      <option>On Credit</option>
+    </select>
+    <button class="btn-primary" id="confirm-sale-btn">Confirm & Record</button>
+    <button class="btn-secondary" data-close="checkout-modal">Cancel</button>
+  </div>
+</div>
+
+<!-- RECEIPT MODAL -->
+<div class="modal-bg" id="receipt-modal">
+  <div class="modal">
+    <button class="close-x" data-close="receipt-modal">&times;</button>
+    <h2>Receipt</h2>
+    <div id="receipt-body" style="font-size:14px;line-height:1.6;margin:10px 0;"></div>
+    <button class="btn-primary" id="receipt-whatsapp-btn">Send via WhatsApp</button>
+    <button class="btn-secondary" id="receipt-sms-btn">Send via SMS</button>
+    <button class="btn-secondary" data-close="receipt-modal">Done</button>
+  </div>
+</div>
+
+<!-- STOCK REQUEST MODAL (Cashier) -->
+<div class="modal-bg" id="stock-request-modal">
+  <div class="modal">
+    <button class="close-x" data-close="stock-request-modal">&times;</button>
+    <h2>Request to Add Stock</h2>
+    <p style="font-size:13px;color:#7a8590;">An admin will review and add this to inventory.</p>
+    <label style="display:block;font-size:12px;font-weight:600;margin:10px 0 4px;color:#5a6570;">Part name</label>
+    <input id="sr-item-name" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:7px;font-size:14px;">
+    <label style="display:block;font-size:12px;font-weight:600;margin:10px 0 4px;color:#5a6570;">Note (quantity, dealer, etc.)</label>
+    <textarea id="sr-note" rows="3" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:7px;font-size:14px;"></textarea>
+    <button class="btn-primary" id="sr-submit-btn">Send Request</button>
+  </div>
+</div>
+
+<!-- PRICE SHEET MODAL (Admin/Owner) -->
+<div class="modal-bg" id="pricesheet-modal">
+  <div class="modal" style="max-width:720px;">
+    <button class="close-x" data-close="pricesheet-modal">&times;</button>
+    <h2>Price Sheet</h2>
+    <p style="font-size:13px;color:#7a8590;">Edit retail/wholesale prices directly. Changes save automatically.</p>
+    <button class="btn-secondary" id="pricesheet-download-btn" style="margin-bottom:10px;">Download as CSV</button>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:13px;" id="pricesheet-table">
+        <thead>
+          <tr style="text-align:left;border-bottom:2px solid var(--line);">
+            <th style="padding:6px;">Part</th>
+            <th style="padding:6px;">Stock</th>
+            <th style="padding:6px;">Cost</th>
+            <th style="padding:6px;">Retail</th>
+            <th style="padding:6px;">Wholesale</th>
+          </tr>
+        </thead>
+        <tbody id="pricesheet-body"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- MANAGE TEAM MODAL (Owner only) -->
+<div class="modal-bg" id="manageteam-modal">
+  <div class="modal">
+    <button class="close-x" data-close="manageteam-modal">&times;</button>
+    <h2>Manage Team</h2>
+    <div id="manageteam-list"></div>
+  </div>
+</div>
+
+<!-- RECEIVE STOCK MODAL (Admin/Owner) -->
+<div class="modal-bg" id="receive-stock-modal">
+  <div class="modal" style="max-width:600px;">
+    <button class="close-x" data-close="receive-stock-modal">&times;</button>
+    <h2>Receive Stock</h2>
+    <div style="display:flex;gap:8px;margin:10px 0;">
+      <button class="icon-btn" data-receive-mode="manual" style="flex:1;">Manual Entry</button>
+      <button class="icon-btn" data-receive-mode="pdf" style="flex:1;">Upload PDF</button>
+      <button class="icon-btn" data-receive-mode="photo" style="flex:1;">Take Photo</button>
+    </div>
+
+    <div id="receive-manual" style="display:none;">
+      <div id="receive-manual-rows"></div>
+      <button class="btn-secondary" id="receive-add-row-btn">+ Add Line</button>
+      <label style="display:block;font-size:12px;font-weight:600;margin:10px 0 4px;color:#5a6570;">Dealer / Supplier (optional)</label>
+      <input id="receive-manual-dealer" list="dealer-list" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:7px;font-size:14px;">
+      <button class="btn-primary" id="receive-manual-confirm-btn">Add to Inventory</button>
+    </div>
+
+    <div id="receive-pdf" style="display:none;">
+      <input type="file" id="receive-pdf-file" accept="application/pdf" style="margin-bottom:10px;">
+      <p style="font-size:12px;color:#7a8590;">We'll read the text and try to match items — you can fix anything before confirming.</p>
+    </div>
+
+    <div id="receive-photo" style="display:none;">
+      <input type="file" id="receive-photo-file" accept="image/*" capture="environment" style="margin-bottom:10px;">
+      <p style="font-size:12px;color:#7a8590;">Photo reading is less accurate than a PDF — review carefully before confirming.</p>
+    </div>
+
+    <div id="receive-status" style="font-size:13px;color:#5a6570;margin:8px 0;"></div>
+
+    <div id="receive-review" style="display:none;">
+      <div class="sectiontitle">Review Before Confirming</div>
+      <div id="receive-review-rows"></div>
+      <label style="display:block;font-size:12px;font-weight:600;margin:10px 0 4px;color:#5a6570;">Dealer / Supplier (optional, applies to all lines)</label>
+      <input id="receive-dealer" list="dealer-list" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:7px;font-size:14px;">
+      <button class="btn-primary" id="receive-confirm-btn">Add to Inventory</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Firebase SDK (compat build - simplest for a single HTML file) -->
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/4.1.1/tesseract.min.js"></script>
+
+<script>
+/* =========================================================
+   0. AUTH & ROLES
+   Roles: 'owner' (invisible tier, full control + team management),
+   'admin' (inventory, reports, pricing), 'cashier' (sell only),
+   'pending' (signed up, awaiting approval), 'revoked' (blocked).
+   Each user's role lives at roles/{their-uid}. The very first
+   person to ever sign up automatically becomes 'owner' — after
+   that, new sign-ups start as 'pending' until an owner/admin
+   approves them from the Dashboard.
+========================================================= */
+let currentRole = 'pending';
+let currentUserEmail = '';
+let isSignupMode = false;
+
+const loginScreen = document.getElementById('login-screen');
+const pendingScreen = document.getElementById('pending-screen');
+const loginForm = document.getElementById('login-form');
+const loginError = document.getElementById('login-error');
+const loginToggleBtn = document.getElementById('login-toggle-btn');
+const loginSubmitBtn = document.getElementById('login-submit-btn');
+
+loginToggleBtn.addEventListener('click', ()=>{
+  isSignupMode = !isSignupMode;
+  loginSubmitBtn.textContent = isSignupMode ? 'Create Account' : 'Sign In';
+  loginToggleBtn.textContent = isSignupMode ? 'Already have an account? Sign in' : 'Need an account? Create one';
+  loginError.style.display = 'none';
+});
+
+loginForm.addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  loginError.style.display = 'none';
+  const email = document.getElementById('login-email').value.trim();
+  const password = document.getElementById('login-password').value;
+  try{
+    if(isSignupMode){
+      const cred = await auth.createUserWithEmailAndPassword(email, password);
+      await bootstrapNewUserRole(cred.user);
+    } else {
+      await auth.signInWithEmailAndPassword(email, password);
+    }
+  } catch(err){
+    loginError.textContent = err.message || 'Something went wrong — check your details and try again.';
+    loginError.style.display = 'block';
+  }
+});
+
+document.getElementById('logout-btn').addEventListener('click', ()=>{
+  if(firebaseReady) auth.signOut();
+});
+document.getElementById('pending-logout-btn').addEventListener('click', ()=>{
+  if(firebaseReady) auth.signOut();
+});
+
+/* First-ever account becomes Owner automatically. Everyone after
+   that starts as 'pending' until approved from the Dashboard. */
+async function bootstrapNewUserRole(user){
+  const existing = await db.collection('roles').limit(1).get();
+  const role = existing.empty ? 'owner' : 'pending';
+  await db.collection('roles').doc(user.uid).set({
+    email: user.email, role, createdAt: firebase.firestore.FieldValue.serverTimestamp()
+  });
+}
+
+async function applyRole(uid, email){
+  currentUserEmail = email || '';
+  try{
+    const doc = await db.collection('roles').doc(uid).get();
+    currentRole = doc.exists ? (doc.data().role || 'pending') : 'pending';
+  } catch(e){
+    console.warn('Could not read role, defaulting to pending.', e);
+    currentRole = 'pending';
+  }
+  document.body.classList.toggle('role-admin', currentRole === 'admin' || currentRole === 'owner');
+  document.body.classList.toggle('role-owner', currentRole === 'owner');
+  document.body.classList.toggle('role-cashier', currentRole === 'cashier');
+
+  if(currentRole === 'pending' || currentRole === 'revoked'){
+    pendingScreen.style.display = 'flex';
+    document.getElementById('pending-title').textContent =
+      currentRole === 'revoked' ? 'Access revoked' : 'Waiting for approval';
+    document.getElementById('pending-text').textContent =
+      currentRole === 'revoked'
+        ? 'Your access to this shop has been removed. Contact your admin if this seems wrong.'
+        : 'Your account has been created. An admin needs to approve your access before you can use the app.';
+    return;
+  }
+  pendingScreen.style.display = 'none';
+
+  renderSell(); renderInventory();
+  if(currentRole === 'cashier'){
+    switchTab('sell');
+    if(openOrders.length === 0) startNewOrder();
+  } else {
+    switchTab('dashboard');
+    renderDashboard();
+  }
+}
+
+function startAuthWatcher(){
+  if(firebaseReady){
+    auth.onAuthStateChanged(async (user)=>{
+      if(user){
+        loginScreen.classList.add('hide');
+        await applyRole(user.uid, user.email);
+        listenInventory();
+        listenPendingApprovals();
+      } else {
+        loginScreen.classList.remove('hide');
+        pendingScreen.style.display = 'none';
+      }
+    });
+  } else {
+    // Demo mode without Firebase configured — skip login entirely
+    loginScreen.classList.add('hide');
+    document.body.classList.add('role-admin','role-owner');
+    currentRole = 'owner';
+  }
+}
+
+/* =========================================================
+   1. FIREBASE SETUP
+   Replace the values below with YOUR OWN Firebase project
+   config. See the instructions given alongside this file
+   for how to get these values (it takes about 5 minutes,
+   free, no card required).
+========================================================= */
+const firebaseConfig = {
+  apiKey: "AIzaSyCXsDfxEkv_Hmn2dJROhLr_7Wz106mp_rc",
+  authDomain: "cashbook-8d088.firebaseapp.com",
+  projectId: "cashbook-8d088",
+  storageBucket: "cashbook-8d088.firebasestorage.app",
+  messagingSenderId: "1007930357972",
+  appId: "1:1007930357972:web:76bfd8ebafd953b9552341"
+};
+
+let db = null;
+let auth = null;
+let firebaseReady = false;
+
+function showSetupBanner(msg){
+  const b = document.getElementById('setup-banner');
+  b.style.display = 'block';
+  b.innerHTML = msg;
+}
+
+try {
+  if (firebaseConfig.apiKey.startsWith("PASTE_")) {
+    showSetupBanner("⚠ <b>Setup needed:</b> open this file in a text editor and paste your Firebase project keys into the <code>firebaseConfig</code> section near the bottom. Instructions were provided with this file. Until then, the app runs in local-only demo mode (data will not be saved permanently or synced).");
+  } else {
+    firebase.initializeApp(firebaseConfig);
+    db = firebase.firestore();
+    auth = firebase.auth();
+    db.enablePersistence({synchronizeTabs:true}).catch(err=>{
+      console.warn("Offline persistence not enabled:", err.code);
+    });
+    firebaseReady = true;
+  }
+} catch(e){
+  showSetupBanner("⚠ Could not connect to Firebase. Check your config values. Error: " + e.message);
+}
+
+/* Local fallback store, used only if Firebase isn't configured yet,
+   so the app is still clickable/demo-able before setup. */
+let localInventory = [];
+let localSales = [];
+
+/* =========================================================
+   2. CONNECTION STATUS INDICATOR
+========================================================= */
+const statusEl = document.getElementById('status');
+function setStatus(state){
+  statusEl.className = state;
+  if(state==='st-online') statusEl.textContent = 'Online · Synced';
+  if(state==='st-offline') statusEl.textContent = 'Offline · Saving locally';
+  if(state==='st-syncing') statusEl.textContent = 'Syncing…';
+}
+window.addEventListener('online', ()=> setStatus(firebaseReady?'st-online':'st-offline'));
+window.addEventListener('offline', ()=> setStatus('st-offline'));
+setStatus(navigator.onLine && firebaseReady ? 'st-online' : 'st-offline');
+
+/* =========================================================
+   3. NAVIGATION
+========================================================= */
+function switchTab(viewName){
+  document.querySelectorAll('nav .tab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  const btn = document.querySelector(`nav .tab[data-view="${viewName}"]`);
+  if(btn) btn.classList.add('active');
+  const view = document.getElementById('view-'+viewName);
+  if(view) view.classList.add('active');
+  if(viewName === 'reports') renderReports();
+  if(viewName === 'dashboard') renderDashboard();
+}
+
+document.querySelectorAll('nav .tab').forEach(btn=>{
+  btn.addEventListener('click', ()=> switchTab(btn.dataset.view));
+});
+document.querySelectorAll('[data-quickview]').forEach(btn=>{
+  btn.addEventListener('click', ()=> switchTab(btn.dataset.quickview));
+});
+
+function openModal(id){ document.getElementById(id).classList.add('show'); }
+function closeModal(id){ document.getElementById(id).classList.remove('show'); }
+document.querySelectorAll('[data-close]').forEach(el=>{
+  el.addEventListener('click', ()=> closeModal(el.dataset.close));
+});
+
+/* =========================================================
+   4. DATA LAYER (Firestore if configured, else local array)
+========================================================= */
+let inventory = []; // {id, name, sku, cost, price, qty, reorder}
+let cart = {}; // itemId -> qty
+
+function inventoryRef(){ return db.collection('inventory'); }
+function ordersRef(){ return db.collection('orders'); }
+function rolesRef(){ return db.collection('roles'); }
+function stockRequestsRef(){ return db.collection('stockRequests'); }
+function overrideRequestsRef(){ return db.collection('overrideRequests'); }
+function stockReceiptsRef(){ return db.collection('stockReceipts'); }
+
+let pendingStockRequests = [];
+let pendingOverrideRequests = [];
+let pendingTeamApprovals = [];
+
+function listenPendingApprovals(){
+  if(!firebaseReady || (currentRole !== 'admin' && currentRole !== 'owner')) return;
+  stockRequestsRef().where('status','==','pending').onSnapshot(snap=>{
+    pendingStockRequests = [];
+    snap.forEach(doc=> pendingStockRequests.push({id:doc.id, ...doc.data()}));
+    renderDashboardPending();
+  });
+  overrideRequestsRef().where('status','==','pending').onSnapshot(snap=>{
+    pendingOverrideRequests = [];
+    snap.forEach(doc=> pendingOverrideRequests.push({id:doc.id, ...doc.data()}));
+    renderDashboardPending();
+  });
+  if(currentRole === 'owner'){
+    rolesRef().onSnapshot(snap=>{
+      pendingTeamApprovals = [];
+      snap.forEach(doc=>{
+        const d = doc.data();
+        if(d.role === 'pending') pendingTeamApprovals.push({id:doc.id, ...d});
+      });
+      renderDashboardPending();
+    });
+  }
+}
+
+function listenInventory(){
+  if(!firebaseReady){
+    inventory = localInventory;
+    renderSell(); renderInventory();
+    return;
+  }
+  inventoryRef().onSnapshot(snap=>{
+    inventory = [];
+    snap.forEach(doc=> inventory.push({id:doc.id, ...doc.data()}));
+    inventory.sort((a,b)=> a.name.localeCompare(b.name));
+    renderSell();
+    renderInventory();
+  }, err=>{
+    console.error(err);
+    setStatus('st-offline');
+  });
+}
+
+async function saveItem(item){
+  if(!firebaseReady){
+    if(item.id){
+      const i = localInventory.findIndex(x=>x.id===item.id);
+      localInventory[i] = item;
+    } else {
+      item.id = 'local-'+Date.now();
+      localInventory.push(item);
+    }
+    renderSell(); renderInventory();
+    return;
+  }
+  setStatus('st-syncing');
+  if(item.id){
+    const {id, ...data} = item;
+    await inventoryRef().doc(id).set(data, {merge:true});
+  } else {
+    const {id, ...data} = item;
+    await inventoryRef().add(data);
+  }
+  setStatus(navigator.onLine ? 'st-online' : 'st-offline');
+}
+
+async function deleteItemById(id){
+  if(!firebaseReady){
+    localInventory = localInventory.filter(x=>x.id!==id);
+    renderSell(); renderInventory();
+    return;
+  }
+  await inventoryRef().doc(id).delete();
+}
+
+/* One order = one transaction, holding multiple line items
+   (e.g. a customer buying 2 brake pads + 1 oil filter is ONE
+   order with 2 lines, not 2 separate records). */
+let lastOrderNumber = 0;
+
+async function recordOrder(lineItems, customerName, paymentMethod){
+  // lineItems: [{itemId, name, qty, price, cost}]
+  const total = lineItems.reduce((sum,l)=> sum + l.price*l.qty, 0);
+  const cashier = (firebaseReady && auth.currentUser) ? auth.currentUser.email : 'local';
+
+  if(!firebaseReady){
+    lastOrderNumber += 1;
+    localSales.push({
+      orderNumber: lastOrderNumber, items: lineItems, total,
+      customerName, paymentMethod, cashier, ts: Date.now()
+    });
+    lineItems.forEach(l=>{
+      const item = localInventory.find(i=>i.id===l.itemId);
+      if(item) item.qty = Math.max(0, item.qty - l.qty);
+    });
+    renderSell(); renderInventory();
+    return {orderNumber: lastOrderNumber, ts: new Date()};
+  }
+
+  setStatus('st-syncing');
+  const orderDoc = ordersRef().doc();
+  const batch = db.batch();
+  const ts = firebase.firestore.FieldValue.serverTimestamp();
+  batch.set(orderDoc, {
+    items: lineItems, total, customerName: customerName||'', paymentMethod, cashier, ts
+  });
+  lineItems.forEach(l=>{
+    const itemDoc = inventoryRef().doc(l.itemId);
+    batch.update(itemDoc, {qty: firebase.firestore.FieldValue.increment(-l.qty)});
+  });
+  await batch.commit();
+  setStatus(navigator.onLine ? 'st-online' : 'st-offline');
+  return {orderNumber: orderDoc.id.slice(-6).toUpperCase(), ts: new Date()};
+}
+
+/* =========================================================
+   5. SELL VIEW — supports several open orders at once
+   (e.g. a line of customers), each with its own cart.
+========================================================= */
+const sellGrid = document.getElementById('sell-grid');
+const searchInput = document.getElementById('search');
+const categoryFilter = document.getElementById('category-filter');
+const idleScreen = document.getElementById('idle-screen');
+const orderScreen = document.getElementById('order-screen');
+
+let openOrders = []; // [{id, cart: {itemId: qty}}]
+let activeOrderId = null;
+let orderCounter = 0;
+
+function getActiveOrder(){
+  return openOrders.find(o=>o.id === activeOrderId) || null;
+}
+
+function startNewOrder(){
+  orderCounter += 1;
+  const order = {id: 'o'+Date.now()+orderCounter, label: 'Order ' + orderCounter, cart: {}};
+  openOrders.push(order);
+  activeOrderId = order.id;
+  showOrderScreen();
+}
+
+function switchToOrder(id){
+  activeOrderId = id;
+  showOrderScreen();
+}
+
+function discardOrder(id){
+  if(!confirm('Discard this order? Items selected will not be saved.')) return;
+  openOrders = openOrders.filter(o=>o.id!==id);
+  if(activeOrderId === id){
+    activeOrderId = openOrders.length ? openOrders[0].id : null;
+  }
+  renderIdleOrOrder();
+}
+
+function renderIdleOrOrder(){
+  if(openOrders.length === 0){
+    idleScreen.style.display = 'block';
+    orderScreen.style.display = 'none';
+    renderResumeOrders();
+  } else {
+    showOrderScreen();
+  }
+}
+
+function showOrderScreen(){
+  idleScreen.style.display = 'none';
+  orderScreen.style.display = 'block';
+  renderOrderTabs();
+  renderSell();
+  updateCartBar();
+}
+
+function renderResumeOrders(){
+  const box = document.getElementById('resume-orders');
+  if(openOrders.length === 0){ box.innerHTML=''; return; }
+  box.innerHTML = openOrders.map(o=>{
+    const qty = Object.values(o.cart).reduce((a,line)=>a+line.qty,0);
+    const total = Object.entries(o.cart).reduce((sum,[id,line])=>{
+      const item = inventory.find(i=>i.id===id);
+      return sum + (item ? getUnitPrice(item, line.qty).price*line.qty : 0);
+    },0);
+    return `<div class="resume-card" data-resume="${o.id}">
+      <div class="r-info"><b>${o.label}</b><div>${qty} item${qty!==1?'s':''} · ${fmt(total)}</div></div>
+      <button class="r-discard" data-discard="${o.id}">Discard</button>
+    </div>`;
+  }).join('');
+  box.querySelectorAll('[data-resume]').forEach(el=>{
+    el.addEventListener('click', (e)=>{
+      if(e.target.closest('[data-discard]')) return;
+      switchToOrder(el.dataset.resume);
+    });
+  });
+  box.querySelectorAll('[data-discard]').forEach(el=>{
+    el.addEventListener('click', (e)=>{ e.stopPropagation(); discardOrder(el.dataset.discard); });
+  });
+}
+
+function renderOrderTabs(){
+  const tabs = document.getElementById('order-tabs');
+  tabs.innerHTML = openOrders.map(o=>
+    `<button class="order-tab ${o.id===activeOrderId?'active':''}" data-tab="${o.id}">${o.label}</button>`
+  ).join('') + `<button class="order-tab new-tab" id="new-order-tab">+ New</button>`;
+
+  tabs.querySelectorAll('[data-tab]').forEach(btn=>{
+    btn.addEventListener('click', ()=> switchToOrder(btn.dataset.tab));
+  });
+  document.getElementById('new-order-tab').addEventListener('click', startNewOrder);
+}
+
+document.getElementById('start-sale-btn').addEventListener('click', startNewOrder);
+
+function refreshFilterOptions(){
+  // Category dropdown
+  const cats = [...new Set(inventory.map(i=>i.category).filter(Boolean))].sort();
+  const currentCat = categoryFilter.value;
+  categoryFilter.innerHTML = '<option value="">All Categories</option>' +
+    cats.map(c=>`<option ${c===currentCat?'selected':''}>${escapeHtml(c)}</option>`).join('');
+
+  // Brand suggestions for the add/edit form
+  const brands = [...new Set(inventory.map(i=>i.brand).filter(Boolean))].sort();
+  document.getElementById('brand-list').innerHTML = brands.map(b=>`<option value="${escapeHtml(b)}">`).join('');
+
+  // Dealer suggestions
+  const dealers = [...new Set(inventory.map(i=>i.dealer).filter(Boolean))].sort();
+  document.getElementById('dealer-list').innerHTML = dealers.map(d=>`<option value="${escapeHtml(d)}">`).join('');
+}
+
+function renderSell(){
+  if(!getActiveOrder()) return;
+  const q = searchInput.value.trim().toLowerCase();
+  const cat = categoryFilter.value;
+  refreshFilterOptions();
+  const items = inventory.filter(i => {
+    const matchesQ = !q || i.name.toLowerCase().includes(q) || (i.sku||'').toLowerCase().includes(q) || (i.brand||'').toLowerCase().includes(q);
+    const matchesCat = !cat || i.category === cat;
+    return matchesQ && matchesCat;
+  });
+  sellGrid.innerHTML = '';
+  document.getElementById('sell-empty').style.display = inventory.length ? 'none' : 'block';
+
+  items.forEach(item=>{
+    const low = item.qty <= (item.reorder ?? 3);
+    const btn = document.createElement('div');
+    btn.className = 'item-btn' + (low ? ' low' : '');
+    const subline = [item.brand, item.category].filter(Boolean).join(' · ');
+    btn.innerHTML = `
+      ${low ? '<span class="badge-low">LOW</span>' : ''}
+      <div class="item-name">${escapeHtml(item.name)}</div>
+      ${subline ? `<div class="item-meta">${escapeHtml(subline)}</div>` : ''}
+      <div class="item-meta">${item.qty} in stock${item.sku ? ' · '+escapeHtml(item.sku) : ''}</div>
+      <div class="item-price">${fmt(item.price)}</div>
+    `;
+    btn.addEventListener('click', ()=>{
+      if(item.qty <= 0){ alert('Out of stock.'); return; }
+      openQtyModal(item);
+    });
+    sellGrid.appendChild(btn);
+  });
+}
+searchInput.addEventListener('input', renderSell);
+categoryFilter.addEventListener('change', renderSell);
+
+/* Quantity picker — avoids repeated tapping for multi-unit sales */
+let qtyModalItem = null;
+
+/* Returns the applicable unit price for a given quantity of an
+   item, based on its wholesale threshold (default 5 units). */
+function getUnitPrice(item, qty){
+  const threshold = item.wholesaleThreshold || 5;
+  const wholesalePrice = item.wholesalePrice || item.price;
+  const isWholesale = qty >= threshold && item.wholesalePrice;
+  return {price: isWholesale ? wholesalePrice : item.price, isWholesale};
+}
+
+function openQtyModal(item){
+  qtyModalItem = item;
+  document.getElementById('qty-modal-name').textContent = item.name;
+  document.getElementById('qty-modal-stock').textContent = item.qty + ' in stock';
+  const order = getActiveOrder();
+  const existingLine = order ? order.cart[item.id] : null;
+  const existing = existingLine ? existingLine.qty : 0;
+  document.getElementById('qty-input').value = existing > 0 ? existing : 1;
+  document.getElementById('qty-input').max = item.qty;
+  updateQtyPricePreview();
+  openModal('qty-modal');
+}
+
+function updateQtyPricePreview(){
+  if(!qtyModalItem) return;
+  const qty = parseInt(document.getElementById('qty-input').value) || 1;
+  const {price, isWholesale} = getUnitPrice(qtyModalItem, qty);
+  document.getElementById('qty-price-preview').innerHTML =
+    `${fmt(price)} each${isWholesale ? ' <b style="color:var(--green);">(wholesale)</b>' : ''} · Total: <b>${fmt(price*qty)}</b>`;
+}
+
+document.getElementById('qty-minus').addEventListener('click', ()=>{
+  const input = document.getElementById('qty-input');
+  input.value = Math.max(1, (parseInt(input.value)||1) - 1);
+  updateQtyPricePreview();
+});
+document.getElementById('qty-plus').addEventListener('click', ()=>{
+  const input = document.getElementById('qty-input');
+  const max = qtyModalItem ? qtyModalItem.qty : 999;
+  input.value = Math.min(max, (parseInt(input.value)||1) + 1);
+  updateQtyPricePreview();
+});
+document.getElementById('qty-input').addEventListener('input', updateQtyPricePreview);
+
+document.getElementById('qty-confirm-btn').addEventListener('click', ()=>{
+  const order = getActiveOrder();
+  if(!order || !qtyModalItem) return;
+  let qty = parseInt(document.getElementById('qty-input').value) || 1;
+  qty = Math.max(1, Math.min(qty, qtyModalItem.qty));
+  const existing = order.cart[qtyModalItem.id];
+  order.cart[qtyModalItem.id] = {qty, overrideNote: existing ? existing.overrideNote : null};
+  closeModal('qty-modal');
+  updateCartBar();
+});
+
+document.getElementById('qty-override-btn').addEventListener('click', ()=>{
+  if(!qtyModalItem) return;
+  const note = prompt('Describe the price you\'d like to request and why (an admin will review this after the sale):');
+  if(note === null || note.trim() === '') return;
+  const order = getActiveOrder();
+  if(!order) return;
+  const qty = parseInt(document.getElementById('qty-input').value) || 1;
+  order.cart[qtyModalItem.id] = {qty, overrideNote: note.trim()};
+  alert('Noted — this sale will go through at standard pricing, and your request will be flagged for admin review.');
+});
+
+function updateCartBar(){
+  const bar = document.getElementById('cart-bar');
+  const order = getActiveOrder();
+  const totalQty = order ? Object.values(order.cart).reduce((a,line)=>a+line.qty,0) : 0;
+  if(totalQty===0){ bar.classList.remove('show'); return; }
+  bar.classList.add('show');
+  document.getElementById('cart-summary').textContent = totalQty + ' item' + (totalQty>1?'s':'') + ' in sale';
+}
+
+document.getElementById('cart-checkout').addEventListener('click', ()=>{
+  const order = getActiveOrder();
+  if(!order) return;
+  const list = document.getElementById('checkout-list');
+  let total = 0;
+  list.innerHTML = '';
+  Object.entries(order.cart).forEach(([id, line])=>{
+    const item = inventory.find(i=>i.id===id);
+    if(!item) return;
+    const {price, isWholesale} = getUnitPrice(item, line.qty);
+    const lineTotal = price * line.qty;
+    total += lineTotal;
+    const row = document.createElement('div');
+    row.style.display='flex'; row.style.justifyContent='space-between'; row.style.padding='4px 0';
+    row.innerHTML = `<span>${escapeHtml(item.name)} × ${line.qty}${isWholesale?' <small style="color:var(--green);">(wholesale)</small>':''}</span><span>${fmt(lineTotal)}</span>`;
+    list.appendChild(row);
+  });
+  document.getElementById('checkout-total').textContent = 'Amount Due: ' + fmt(total);
+  openModal('checkout-modal');
+});
+
+document.getElementById('confirm-sale-btn').addEventListener('click', async ()=>{
+  const order = getActiveOrder();
+  if(!order) return;
+  const lines = Object.entries(order.cart).map(([id,line])=>{
+    const item = inventory.find(i=>i.id===id);
+    if(!item) return null;
+    const {price, isWholesale} = getUnitPrice(item, line.qty);
+    return {itemId:id, name:item.name, qty:line.qty, price, cost:item.cost, isWholesale, overrideNote: line.overrideNote||null};
+  }).filter(Boolean);
+  if(lines.length===0) return;
+
+  const customerName = document.getElementById('checkout-customer').value.trim();
+  const customerPhone = document.getElementById('checkout-phone').value.trim();
+  const paymentMethod = document.getElementById('checkout-payment').value;
+
+  const result = await recordOrder(lines, customerName, paymentMethod);
+
+  // Flag any override-requested lines for admin review
+  const overrideLines = lines.filter(l=>l.overrideNote);
+  if(overrideLines.length && firebaseReady){
+    overrideLines.forEach(l=>{
+      db.collection('overrideRequests').add({
+        orderNumber: result.orderNumber, itemName: l.name, qty: l.qty,
+        note: l.overrideNote, cashier: currentUserEmail, status: 'pending',
+        ts: firebase.firestore.FieldValue.serverTimestamp()
+      }).catch(e=>console.warn('Could not save override request', e));
+    });
+  }
+
+  // this order is done — remove it and move to the next open one, if any
+  openOrders = openOrders.filter(o=>o.id!==order.id);
+  activeOrderId = openOrders.length ? openOrders[0].id : null;
+
+  closeModal('checkout-modal');
+  showReceipt(lines, customerName, customerPhone, paymentMethod, result);
+  renderIdleOrOrder();
+
+  // reset the checkout form for next time
+  document.getElementById('checkout-customer').value = '';
+  document.getElementById('checkout-phone').value = '';
+  document.getElementById('checkout-payment').value = 'Cash';
+});
+
+function receiptText(lines, customerName, paymentMethod, result){
+  const total = lines.reduce((s,l)=> s + l.price*l.qty, 0);
+  const when = result.ts instanceof Date ? result.ts : new Date();
+  const itemLines = lines.map(l=> `${l.name} x${l.qty} - ${fmt(l.price*l.qty)}`).join('\n');
+  return `Receipt - Order #${result.orderNumber}\n${when.toLocaleString()}\n\n${itemLines}\n\nTotal: ${fmt(total)}\nPayment: ${paymentMethod}\n\nThank you for your business!`;
+}
+
+/* Normalizes a locally-typed phone number (e.g. 0712345678) into
+   international format for WhatsApp links. Assumes Kenya (+254)
+   since numbers starting with 0 are ambiguous otherwise — if your
+   shop serves other countries, just type the full number with a
+   country code instead (e.g. +2557...) and this leaves it as-is. */
+function normalizePhone(phone){
+  const digits = phone.replace(/[^0-9+]/g, '');
+  if(digits.startsWith('+')) return digits.slice(1);
+  if(digits.startsWith('0')) return '254' + digits.slice(1);
+  return digits;
+}
+
+let lastReceiptData = null;
+
+function showReceipt(lines, customerName, customerPhone, paymentMethod, result){
+  const total = lines.reduce((s,l)=> s + l.price*l.qty, 0);
+  const rows = lines.map(l=>
+    `<div style="display:flex;justify-content:space-between;padding:3px 0;">
+       <span>${escapeHtml(l.name)} × ${l.qty}</span><span>${fmt(l.price*l.qty)}</span>
+     </div>`).join('');
+  const when = result.ts instanceof Date ? result.ts : new Date();
+  document.getElementById('receipt-body').innerHTML = `
+    <div style="text-align:center;margin-bottom:10px;">
+      <b>Order #${result.orderNumber}</b><br>
+      <span style="font-size:12px;color:#7a8590;">${when.toLocaleString()}</span>
+    </div>
+    <div style="border-top:1px dashed var(--line);border-bottom:1px dashed var(--line);padding:8px 0;">${rows}</div>
+    <div style="display:flex;justify-content:space-between;font-weight:800;padding:8px 0;">
+      <span>Total</span><span>${fmt(total)}</span>
+    </div>
+    <div style="font-size:13px;color:#5a6570;">
+      Customer: ${escapeHtml(customerName || 'Walk-in')}<br>
+      Payment: ${escapeHtml(paymentMethod)}
+    </div>
+  `;
+  lastReceiptData = {lines, customerName, customerPhone, paymentMethod, result};
+  const noPhone = !customerPhone;
+  document.getElementById('receipt-whatsapp-btn').style.opacity = noPhone ? '0.5' : '1';
+  document.getElementById('receipt-sms-btn').style.opacity = noPhone ? '0.5' : '1';
+  openModal('receipt-modal');
+}
+
+document.getElementById('receipt-whatsapp-btn').addEventListener('click', ()=>{
+  if(!lastReceiptData || !lastReceiptData.customerPhone){
+    alert('No customer phone number was entered for this sale.');
+    return;
+  }
+  const {lines, customerName, customerPhone, paymentMethod, result} = lastReceiptData;
+  const text = encodeURIComponent(receiptText(lines, customerName, paymentMethod, result));
+  const phone = normalizePhone(customerPhone);
+  window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+});
+
+document.getElementById('receipt-sms-btn').addEventListener('click', ()=>{
+  if(!lastReceiptData || !lastReceiptData.customerPhone){
+    alert('No customer phone number was entered for this sale.');
+    return;
+  }
+  const {lines, customerName, paymentMethod, result} = lastReceiptData;
+  const text = encodeURIComponent(receiptText(lines, customerName, paymentMethod, result));
+  window.location.href = `sms:${lastReceiptData.customerPhone}?body=${text}`;
+});
+
+/* =========================================================
+   6. INVENTORY VIEW
+========================================================= */
+const invList = document.getElementById('inv-list');
+
+function renderInventory(){
+  invList.innerHTML = '';
+  document.getElementById('inv-empty').style.display = inventory.length ? 'none' : 'block';
+  inventory.forEach(item=>{
+    const low = item.qty <= (item.reorder ?? 3);
+    const row = document.createElement('div');
+    row.className = 'inv-row';
+    row.innerHTML = `
+      <div class="inv-info">
+        <b>${escapeHtml(item.name)}</b>
+        <div>${[item.brand, item.category].filter(Boolean).map(escapeHtml).join(' · ')}</div>
+        <div>${item.sku ? escapeHtml(item.sku)+' · ' : ''}Cost ${fmt(item.cost)} · Sell ${fmt(item.price)}</div>
+        ${item.dealer ? `<div>Dealer: ${escapeHtml(item.dealer)}</div>` : ''}
+      </div>
+      <div class="inv-qty ${low?'low':''}">${item.qty}</div>
+      <button class="icon-btn admin-only" data-edit="${item.id}">Edit</button>
+    `;
+    invList.appendChild(row);
+  });
+  invList.querySelectorAll('[data-edit]').forEach(b=>{
+    b.addEventListener('click', ()=> openEditModal(b.dataset.edit));
+  });
+}
+
+function openEditModal(id){
+  const item = inventory.find(i=>i.id===id);
+  document.getElementById('item-modal-title').textContent = item ? 'Edit Part' : 'Add Part';
+  document.getElementById('item-id').value = item ? item.id : '';
+  document.getElementById('f-name').value = item ? item.name : '';
+  document.getElementById('f-brand').value = item ? (item.brand||'') : '';
+  document.getElementById('f-category').value = item ? (item.category||'') : '';
+  document.getElementById('f-sku').value = item ? (item.sku||'') : '';
+  document.getElementById('f-dealer').value = item ? (item.dealer||'') : '';
+  document.getElementById('f-dealer-phone').value = item ? (item.dealerPhone||'') : '';
+  document.getElementById('f-dealer-email').value = item ? (item.dealerEmail||'') : '';
+  document.getElementById('f-cost').value = item ? item.cost : '';
+  document.getElementById('f-price').value = item ? item.price : '';
+  document.getElementById('f-wholesale-price').value = item ? (item.wholesalePrice||'') : '';
+  document.getElementById('f-wholesale-threshold').value = item ? (item.wholesaleThreshold||'') : '';
+  document.getElementById('f-qty').value = item ? item.qty : '';
+  document.getElementById('f-reorder').value = item ? (item.reorder ?? 3) : 3;
+  document.getElementById('delete-item-btn').style.display = item ? 'block' : 'none';
+  openModal('item-modal');
+}
+
+document.getElementById('add-item-btn').addEventListener('click', ()=> openEditModal(null));
+
+document.getElementById('item-form').addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const id = document.getElementById('item-id').value || null;
+  const item = {
+    id,
+    name: document.getElementById('f-name').value.trim(),
+    brand: document.getElementById('f-brand').value.trim(),
+    category: document.getElementById('f-category').value,
+    sku: document.getElementById('f-sku').value.trim(),
+    dealer: document.getElementById('f-dealer').value.trim(),
+    dealerPhone: document.getElementById('f-dealer-phone').value.trim(),
+    dealerEmail: document.getElementById('f-dealer-email').value.trim(),
+    cost: parseFloat(document.getElementById('f-cost').value)||0,
+    price: parseFloat(document.getElementById('f-price').value)||0,
+    wholesalePrice: parseFloat(document.getElementById('f-wholesale-price').value) || null,
+    wholesaleThreshold: parseInt(document.getElementById('f-wholesale-threshold').value) || null,
+    qty: parseInt(document.getElementById('f-qty').value)||0,
+    reorder: parseInt(document.getElementById('f-reorder').value)||0
+  };
+  await saveItem(item);
+  closeModal('item-modal');
+});
+
+document.getElementById('delete-item-btn').addEventListener('click', async ()=>{
+  const id = document.getElementById('item-id').value;
+  if(!id) return;
+  if(confirm('Delete this part? This cannot be undone.')){
+    await deleteItemById(id);
+    closeModal('item-modal');
+  }
+});
+
+/* =========================================================
+   7. REPORTS VIEW
+========================================================= */
+async function getOrdersLast30Days(){
+  if(!firebaseReady){
+    const cutoff = Date.now() - 30*24*60*60*1000;
+    return localSales.filter(o=>o.ts >= cutoff);
+  }
+  const cutoff = new Date(Date.now() - 30*24*60*60*1000);
+  const snap = await ordersRef().where('ts', '>=', cutoff).get();
+  const out = [];
+  snap.forEach(doc=> out.push(doc.data()));
+  return out;
+}
+
+/* =========================================================
+   DASHBOARD (Admin/Owner landing screen)
+========================================================= */
+let chartRevenue = null, chartTopSellers = null, chartPricingSplit = null;
+
+async function getOrdersInRange(days){
+  if(!firebaseReady){
+    const cutoff = Date.now() - days*24*60*60*1000;
+    return localSales.filter(o=>o.ts >= cutoff);
+  }
+  const cutoff = new Date(Date.now() - days*24*60*60*1000);
+  const snap = await ordersRef().where('ts', '>=', cutoff).get();
+  const out = [];
+  snap.forEach(doc=> out.push(doc.data()));
+  return out;
+}
+
+function startOfToday(){
+  const d = new Date(); d.setHours(0,0,0,0); return d;
+}
+
+async function renderDashboard(){
+  if(currentRole !== 'admin' && currentRole !== 'owner') return;
+
+  // Today's stats
+  const allRecent = await getOrdersInRange(30);
+  const todayStart = startOfToday();
+  const toDate = (ts)=> ts instanceof Date ? ts : (ts && ts.toDate ? ts.toDate() : new Date(ts));
+  const todaysOrders = allRecent.filter(o=> toDate(o.ts) >= todayStart);
+
+  let revenueToday = 0, profitToday = 0;
+  todaysOrders.forEach(o=>{
+    (o.items||[]).forEach(l=>{
+      revenueToday += l.price*l.qty;
+      profitToday += (l.price-(l.cost||0))*l.qty;
+    });
+  });
+  document.getElementById('dash-revenue').textContent = fmt(revenueToday);
+  document.getElementById('dash-profit').textContent = fmt(profitToday);
+  document.getElementById('dash-orders').textContent = todaysOrders.length;
+
+  const lowStockItems = inventory.filter(i => i.qty <= (i.reorder ?? 3));
+  document.getElementById('dash-lowstock').textContent = lowStockItems.length;
+  document.getElementById('dash-lowstock-card').onclick = ()=> switchTab('reports');
+
+  renderDashboardPending();
+  renderDashboardCharts(allRecent);
+}
+
+function renderDashboardPending(){
+  const section = document.getElementById('dash-pending-section');
+  const list = document.getElementById('dash-pending-list');
+  const items = [];
+
+  pendingStockRequests.forEach(r=>{
+    items.push(`<div class="rank-row"><span>📦 Stock request: ${escapeHtml(r.itemName||r.note||'item')} <small style="color:#7a8590;">by ${escapeHtml(r.requestedBy||'')}</small></span>
+      <span><button class="icon-btn" data-approve-stock="${r.id}">Review</button></span></div>`);
+  });
+  pendingOverrideRequests.forEach(r=>{
+    items.push(`<div class="rank-row"><span>💲 Price request: ${escapeHtml(r.itemName)} x${r.qty} <small style="color:#7a8590;">by ${escapeHtml(r.cashier||'')}</small><br><small>${escapeHtml(r.note||'')}</small></span>
+      <span><button class="icon-btn" data-resolve-override="${r.id}">Mark Reviewed</button></span></div>`);
+  });
+  pendingTeamApprovals.forEach(r=>{
+    items.push(`<div class="rank-row"><span>👤 New sign-up: ${escapeHtml(r.email)}</span>
+      <span>
+        <button class="icon-btn" data-approve-role="${r.id}:cashier">As Cashier</button>
+        <button class="icon-btn" data-approve-role="${r.id}:admin">As Admin</button>
+      </span></div>`);
+  });
+
+  if(items.length === 0){ section.style.display = 'none'; return; }
+  section.style.display = 'block';
+  list.innerHTML = items.join('');
+
+  list.querySelectorAll('[data-approve-stock]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const req = pendingStockRequests.find(r=>r.id===btn.dataset.approveStock);
+      if(!req) return;
+      openEditModal(null);
+      document.getElementById('f-name').value = req.itemName || '';
+      stockRequestsRef().doc(req.id).update({status:'resolved'}).catch(()=>{});
+    });
+  });
+  list.querySelectorAll('[data-resolve-override]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      overrideRequestsRef().doc(btn.dataset.resolveOverride).update({status:'resolved'}).catch(()=>{});
+    });
+  });
+  list.querySelectorAll('[data-approve-role]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const [uid, role] = btn.dataset.approveRole.split(':');
+      rolesRef().doc(uid).update({role}).catch(()=>{});
+    });
+  });
+}
+
+function renderDashboardCharts(orders){
+  if(typeof Chart === 'undefined') return;
+
+  // Revenue over last 14 days
+  const days = [];
+  const revByDay = {};
+  for(let i=13;i>=0;i--){
+    const d = new Date(); d.setHours(0,0,0,0); d.setDate(d.getDate()-i);
+    const key = d.toLocaleDateString(undefined,{month:'short',day:'numeric'});
+    days.push(key); revByDay[key] = 0;
+  }
+  orders.forEach(o=>{
+    const d = o.ts instanceof Date ? o.ts : (o.ts && o.ts.toDate ? o.ts.toDate() : new Date(o.ts));
+    const key = d.toLocaleDateString(undefined,{month:'short',day:'numeric'});
+    if(key in revByDay){
+      (o.items||[]).forEach(l=> revByDay[key] += l.price*l.qty);
+    }
+  });
+
+  const revCtx = document.getElementById('chart-revenue');
+  if(chartRevenue) chartRevenue.destroy();
+  chartRevenue = new Chart(revCtx, {
+    type:'line',
+    data:{labels:days, datasets:[{label:'Revenue', data:days.map(d=>revByDay[d]), borderColor:'#3c5a6b', backgroundColor:'rgba(60,90,107,0.1)', fill:true, tension:0.3}]},
+    options:{plugins:{title:{display:true,text:'Revenue — Last 14 Days'}}, responsive:true}
+  });
+
+  // Top sellers
+  const moveCount = {};
+  orders.forEach(o=> (o.items||[]).forEach(l=> moveCount[l.name] = (moveCount[l.name]||0)+l.qty));
+  const topEntries = Object.entries(moveCount).sort((a,b)=>b[1]-a[1]).slice(0,6);
+
+  const topCtx = document.getElementById('chart-topsellers');
+  if(chartTopSellers) chartTopSellers.destroy();
+  chartTopSellers = new Chart(topCtx, {
+    type:'bar',
+    data:{labels:topEntries.map(e=>e[0]), datasets:[{label:'Units Sold', data:topEntries.map(e=>e[1]), backgroundColor:'#c7952a'}]},
+    options:{plugins:{title:{display:true,text:'Top Sellers — Last 30 Days'}}, responsive:true, indexAxis:'y'}
+  });
+
+  // Retail vs Wholesale split
+  let retailRev = 0, wholesaleRev = 0;
+  orders.forEach(o=> (o.items||[]).forEach(l=>{
+    if(l.isWholesale) wholesaleRev += l.price*l.qty; else retailRev += l.price*l.qty;
+  }));
+  const splitCtx = document.getElementById('chart-pricing-split');
+  if(chartPricingSplit) chartPricingSplit.destroy();
+  chartPricingSplit = new Chart(splitCtx, {
+    type:'doughnut',
+    data:{labels:['Retail','Wholesale'], datasets:[{data:[retailRev, wholesaleRev], backgroundColor:['#3c5a6b','#b5502e']}]},
+    options:{plugins:{title:{display:true,text:'Retail vs Wholesale Revenue'}}, responsive:true}
+  });
+}
+
+document.getElementById('dash-pricesheet-btn').addEventListener('click', openPriceSheet);
+document.getElementById('dash-manageteam-btn').addEventListener('click', openManageTeam);
+document.getElementById('dash-receive-stock-btn').addEventListener('click', openReceiveStock);
+
+async function renderReports(){
+  const orders = await getOrdersLast30Days();
+  let revenue = 0, profit = 0, itemsSold = 0;
+  const moveCount = {}; // itemId -> qty sold
+
+  orders.forEach(o=>{
+    (o.items||[]).forEach(l=>{
+      revenue += l.price * l.qty;
+      profit += (l.price - (l.cost||0)) * l.qty;
+      itemsSold += l.qty;
+      moveCount[l.itemId] = (moveCount[l.itemId]||0) + l.qty;
+    });
+  });
+
+  document.getElementById('stat-revenue').textContent = fmt(revenue);
+  document.getElementById('stat-profit').textContent = fmt(profit);
+  document.getElementById('stat-sales').textContent = orders.length + ' orders';
+
+  const lowStockItems = inventory.filter(i => i.qty <= (i.reorder ?? 3));
+  document.getElementById('stat-lowstock').textContent = lowStockItems.length;
+
+  // fast / slow movers
+  const ranked = inventory.map(i=>({
+    name:i.name, sold: moveCount[i.id]||0
+  })).sort((a,b)=> b.sold - a.sold);
+
+  const fast = ranked.slice(0,5);
+  const slow = ranked.filter(r=>r.sold===0).slice(0,5);
+
+  document.getElementById('fast-movers').innerHTML = fast.length
+    ? fast.map(r=>`<div class="rank-row"><span>${escapeHtml(r.name)}</span><b>${r.sold} sold</b></div>`).join('')
+    : '<div class="empty">No sales recorded yet.</div>';
+
+  document.getElementById('slow-movers').innerHTML = slow.length
+    ? slow.map(r=>`<div class="rank-row"><span>${escapeHtml(r.name)}</span><b>0 sold</b></div>`).join('')
+    : '<div class="empty">Nothing sitting idle — nice.</div>';
+
+  renderLowStock(lowStockItems);
+}
+
+function renderLowStock(lowStockItems){
+  if(lowStockItems.length === 0){
+    document.getElementById('low-stock-list').innerHTML = '<div class="empty">All stock levels healthy.</div>';
+    return;
+  }
+
+  // Group by dealer so we can send one message per supplier
+  // instead of one per item.
+  const byDealer = {};
+  lowStockItems.forEach(i=>{
+    const key = i.dealer || 'No dealer on file';
+    byDealer[key] = byDealer[key] || [];
+    byDealer[key].push(i);
+  });
+
+  let html = '';
+  Object.entries(byDealer).forEach(([dealerName, items])=>{
+    const sample = items[0];
+    const itemList = items.map(i=>`- ${i.name} (currently ${i.qty} left)`).join('\n');
+    const message = `Hi ${dealerName !== 'No dealer on file' ? dealerName : ''}, we're running low on the following and would like to place an order:\n\n${itemList}\n\nPlease let us know availability and pricing. Thank you.`;
+
+    html += `<div style="padding:10px 0;border-bottom:1px solid var(--line);">
+      <div style="font-weight:700;font-size:13px;margin-bottom:6px;">${escapeHtml(dealerName)}</div>
+      ${items.map(i=>`<div class="rank-row" style="border:none;padding:2px 0;"><span>${escapeHtml(i.name)}</span><b>${i.qty} left</b></div>`).join('')}
+      ${dealerName !== 'No dealer on file' ? `
+      <div style="display:flex;gap:8px;margin-top:8px;">
+        ${sample.dealerPhone ? `<button class="icon-btn reorder-whatsapp" data-phone="${escapeHtml(sample.dealerPhone)}" data-msg="${encodeURIComponent(message)}" style="flex:1;">WhatsApp Dealer</button>` : ''}
+        ${sample.dealerEmail ? `<button class="icon-btn reorder-email" data-email="${escapeHtml(sample.dealerEmail)}" data-msg="${encodeURIComponent(message)}" data-dealer="${escapeHtml(dealerName)}" style="flex:1;">Email Dealer</button>` : ''}
+      </div>
+      ${!sample.dealerPhone && !sample.dealerEmail ? '<div style="font-size:12px;color:#7a8590;margin-top:4px;">Add a phone or email for this dealer in Inventory to enable one-tap reorder.</div>' : ''}
+      ` : '<div style="font-size:12px;color:#7a8590;margin-top:4px;">Set a dealer on these parts to enable reorder alerts.</div>'}
+    </div>`;
+  });
+
+  document.getElementById('low-stock-list').innerHTML = html;
+
+  document.querySelectorAll('.reorder-whatsapp').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const phone = normalizePhone(btn.dataset.phone);
+      window.open(`https://wa.me/${phone}?text=${btn.dataset.msg}`, '_blank');
+    });
+  });
+  document.querySelectorAll('.reorder-email').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const subject = encodeURIComponent(`Stock Reorder Request - ${btn.dataset.dealer}`);
+      window.location.href = `mailto:${btn.dataset.email}?subject=${subject}&body=${btn.dataset.msg}`;
+    });
+  });
+}
+
+/* =========================================================
+   8. HELPERS
+========================================================= */
+function fmt(n){
+  return (Number(n)||0).toLocaleString(undefined, {style:'currency', currency:'USD'});
+}
+function escapeHtml(str){
+  const d = document.createElement('div');
+  d.textContent = str||'';
+  return d.innerHTML;
+}
+
+/* =========================================================
+   CASHIER: REQUEST TO ADD STOCK
+========================================================= */
+document.getElementById('request-stock-btn').addEventListener('click', ()=>{
+  document.getElementById('sr-item-name').value = '';
+  document.getElementById('sr-note').value = '';
+  openModal('stock-request-modal');
+});
+document.getElementById('sr-submit-btn').addEventListener('click', async ()=>{
+  const itemName = document.getElementById('sr-item-name').value.trim();
+  if(!itemName){ alert('Please enter a part name.'); return; }
+  const note = document.getElementById('sr-note').value.trim();
+  if(firebaseReady){
+    await stockRequestsRef().add({
+      itemName, note, requestedBy: currentUserEmail, status: 'pending',
+      ts: firebase.firestore.FieldValue.serverTimestamp()
+    });
+  }
+  closeModal('stock-request-modal');
+  alert('Request sent to your admin.');
+});
+
+/* =========================================================
+   ADMIN/OWNER: PRICE SHEET (spreadsheet view)
+========================================================= */
+function openPriceSheet(){
+  renderPriceSheet();
+  openModal('pricesheet-modal');
+}
+function renderPriceSheet(){
+  const body = document.getElementById('pricesheet-body');
+  body.innerHTML = inventory.map(item=>`
+    <tr style="border-bottom:1px solid var(--line);" data-row="${item.id}">
+      <td style="padding:6px;">${escapeHtml(item.name)}</td>
+      <td style="padding:6px;">${item.qty}</td>
+      <td style="padding:6px;">${fmt(item.cost)}</td>
+      <td style="padding:6px;"><input type="number" step="0.01" value="${item.price}" data-field="price" style="width:80px;padding:4px;border:1px solid var(--line);border-radius:5px;"></td>
+      <td style="padding:6px;"><input type="number" step="0.01" value="${item.wholesalePrice||''}" data-field="wholesalePrice" placeholder="—" style="width:80px;padding:4px;border:1px solid var(--line);border-radius:5px;"></td>
+    </tr>
+  `).join('');
+  body.querySelectorAll('input').forEach(input=>{
+    input.addEventListener('change', async ()=>{
+      const row = input.closest('[data-row]');
+      const id = row.dataset.row;
+      const field = input.dataset.field;
+      const value = parseFloat(input.value) || null;
+      if(firebaseReady){
+        await inventoryRef().doc(id).update({[field]: value});
+      } else {
+        const item = localInventory.find(i=>i.id===id);
+        if(item) item[field] = value;
+      }
+    });
+  });
+}
+document.getElementById('pricesheet-download-btn').addEventListener('click', ()=>{
+  let csv = 'Part,SKU,Stock,Cost,Retail Price,Wholesale Price,Dealer\n';
+  inventory.forEach(i=>{
+    csv += [i.name, i.sku||'', i.qty, i.cost, i.price, i.wholesalePrice||'', i.dealer||'']
+      .map(v=>`"${String(v).replace(/"/g,'""')}"`).join(',') + '\n';
+  });
+  const blob = new Blob([csv], {type:'text/csv'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'price-sheet.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+});
+
+/* =========================================================
+   OWNER: MANAGE TEAM
+========================================================= */
+function openManageTeam(){
+  renderManageTeam();
+  openModal('manageteam-modal');
+}
+async function renderManageTeam(){
+  const list = document.getElementById('manageteam-list');
+  list.innerHTML = 'Loading…';
+  if(!firebaseReady){ list.innerHTML = '<div class="empty">Not available in demo mode.</div>'; return; }
+  const snap = await rolesRef().get();
+  const people = [];
+  snap.forEach(doc=> people.push({uid:doc.id, ...doc.data()}));
+  people.sort((a,b)=> (a.email||'').localeCompare(b.email||''));
+
+  list.innerHTML = people.map(p=>{
+    if(p.role === 'owner') return ''; // owner tier stays invisible, not shown/editable here
+    return `<div class="inv-row">
+      <div class="inv-info"><b>${escapeHtml(p.email||p.uid)}</b><div>Current: ${escapeHtml(p.role)}</div></div>
+      <select data-role-select="${p.uid}" style="padding:6px;border:1px solid var(--line);border-radius:6px;">
+        <option value="pending" ${p.role==='pending'?'selected':''}>Pending</option>
+        <option value="cashier" ${p.role==='cashier'?'selected':''}>Cashier</option>
+        <option value="admin" ${p.role==='admin'?'selected':''}>Admin</option>
+        <option value="revoked" ${p.role==='revoked'?'selected':''}>Revoked</option>
+      </select>
+    </div>`;
+  }).join('') || '<div class="empty">No team members yet.</div>';
+
+  list.querySelectorAll('[data-role-select]').forEach(sel=>{
+    sel.addEventListener('change', async ()=>{
+      await rolesRef().doc(sel.dataset.roleSelect).update({role: sel.value});
+    });
+  });
+}
+
+/* =========================================================
+   ADMIN/OWNER: RECEIVE STOCK (manual / PDF / photo)
+========================================================= */
+let receiveDraftLines = []; // [{name, qty, cost, matchedId}]
+
+function openReceiveStock(){
+  document.getElementById('receive-manual').style.display = 'none';
+  document.getElementById('receive-pdf').style.display = 'none';
+  document.getElementById('receive-photo').style.display = 'none';
+  document.getElementById('receive-review').style.display = 'none';
+  document.getElementById('receive-status').textContent = '';
+  receiveDraftLines = [];
+  openModal('receive-stock-modal');
+}
+document.querySelectorAll('[data-receive-mode]').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    ['manual','pdf','photo'].forEach(m=> document.getElementById('receive-'+m).style.display = 'none');
+    document.getElementById('receive-review').style.display = 'none';
+    document.getElementById('receive-'+btn.dataset.receiveMode).style.display = 'block';
+    if(btn.dataset.receiveMode === 'manual' && document.getElementById('receive-manual-rows').children.length===0){
+      addManualRow();
+    }
+  });
+});
+
+function addManualRow(){
+  const rows = document.getElementById('receive-manual-rows');
+  const row = document.createElement('div');
+  row.style.cssText = 'display:flex;gap:6px;margin-bottom:6px;';
+  row.innerHTML = `
+    <input placeholder="Part name" class="rm-name" style="flex:2;padding:8px;border:1px solid var(--line);border-radius:6px;font-size:13px;">
+    <input type="number" placeholder="Qty" class="rm-qty" style="flex:1;padding:8px;border:1px solid var(--line);border-radius:6px;font-size:13px;">
+    <input type="number" placeholder="Cost" class="rm-cost" style="flex:1;padding:8px;border:1px solid var(--line);border-radius:6px;font-size:13px;">
+  `;
+  rows.appendChild(row);
+}
+document.getElementById('receive-add-row-btn').addEventListener('click', addManualRow);
+
+function fuzzyMatchItem(name){
+  const lower = name.toLowerCase().trim();
+  let best = null, bestScore = 0;
+  inventory.forEach(item=>{
+    const itemLower = item.name.toLowerCase();
+    let score = 0;
+    if(itemLower === lower) score = 100;
+    else if(itemLower.includes(lower) || lower.includes(itemLower)) score = 60;
+    else {
+      const wordsA = lower.split(/\s+/), wordsB = itemLower.split(/\s+/);
+      score = wordsA.filter(w=>wordsB.includes(w)).length * 10;
+    }
+    if(score > bestScore){ bestScore = score; best = item; }
+  });
+  return bestScore >= 20 ? best : null;
+}
+
+function renderReceiveReview(){
+  const box = document.getElementById('receive-review-rows');
+  box.innerHTML = receiveDraftLines.map((line, idx)=>{
+    const options = inventory.map(i=>`<option value="${i.id}" ${line.matchedId===i.id?'selected':''}>${escapeHtml(i.name)}</option>`).join('');
+    return `<div style="display:flex;gap:6px;margin-bottom:6px;align-items:center;" data-line="${idx}">
+      <select class="rr-match" style="flex:2;padding:6px;border:1px solid var(--line);border-radius:6px;font-size:12px;">
+        <option value="">— New item: ${escapeHtml(line.name)} —</option>
+        ${options}
+      </select>
+      <input type="number" class="rr-qty" value="${line.qty}" style="width:60px;padding:6px;border:1px solid var(--line);border-radius:6px;font-size:12px;">
+      <input type="number" class="rr-cost" value="${line.cost||''}" placeholder="Cost" style="width:70px;padding:6px;border:1px solid var(--line);border-radius:6px;font-size:12px;">
+    </div>`;
+  }).join('');
+  document.getElementById('receive-review').style.display = 'block';
+}
+
+document.getElementById('receive-pdf-file').addEventListener('change', async (e)=>{
+  const file = e.target.files[0];
+  if(!file) return;
+  document.getElementById('receive-status').textContent = 'Reading PDF…';
+  try{
+    const buf = await file.arrayBuffer();
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    const pdf = await pdfjsLib.getDocument({data: buf}).promise;
+    let text = '';
+    for(let p=1; p<=pdf.numPages; p++){
+      const page = await pdf.getPage(p);
+      const content = await page.getTextContent();
+      text += content.items.map(i=>i.str).join(' ') + '\n';
+    }
+    receiveDraftLines = parseReceiptText(text);
+    document.getElementById('receive-status').textContent = `Found ${receiveDraftLines.length} possible line item(s) — review below.`;
+    renderReceiveReview();
+  } catch(err){
+    document.getElementById('receive-status').textContent = 'Could not read that PDF — try Manual Entry instead.';
+    console.error(err);
+  }
+});
+
+document.getElementById('receive-photo-file').addEventListener('change', async (e)=>{
+  const file = e.target.files[0];
+  if(!file) return;
+  document.getElementById('receive-status').textContent = 'Reading photo… this can take a moment.';
+  try{
+    const result = await Tesseract.recognize(file, 'eng');
+    receiveDraftLines = parseReceiptText(result.data.text);
+    document.getElementById('receive-status').textContent = `Found ${receiveDraftLines.length} possible line item(s) — review carefully below.`;
+    renderReceiveReview();
+  } catch(err){
+    document.getElementById('receive-status').textContent = 'Could not read that photo — try Manual Entry instead.';
+    console.error(err);
+  }
+});
+
+/* Very simple heuristic: looks for lines containing a number
+   (treated as quantity) and takes the rest as the item name.
+   This is best-effort — the review step before confirming is
+   what keeps mistakes from reaching your inventory. */
+function parseReceiptText(text){
+  const lines = text.split('\n').map(l=>l.trim()).filter(l=>l.length > 2);
+  const results = [];
+  lines.forEach(line=>{
+    const match = line.match(/^(.*?)\s+(\d+)\s*(?:x|pcs|units)?\s*(?:@|-)?\s*([\d,.]+)?/i);
+    if(match && match[1] && match[1].trim().length > 1){
+      const name = match[1].trim();
+      const qty = parseInt(match[2]) || 1;
+      const cost = match[3] ? parseFloat(match[3].replace(/,/g,'')) : null;
+      if(qty > 0 && qty < 1000){
+        const matched = fuzzyMatchItem(name);
+        results.push({name, qty, cost, matchedId: matched ? matched.id : null});
+      }
+    }
+  });
+  return results.slice(0, 30);
+}
+
+document.getElementById('receive-confirm-btn').addEventListener('click', async ()=>{
+  const dealer = document.getElementById('receive-dealer').value.trim();
+  const rows = document.querySelectorAll('#receive-review-rows [data-line]');
+  const finalLines = [];
+  rows.forEach(row=>{
+    const matchId = row.querySelector('.rr-match').value;
+    const qty = parseInt(row.querySelector('.rr-qty').value) || 0;
+    const cost = parseFloat(row.querySelector('.rr-cost').value) || 0;
+    if(qty > 0) finalLines.push({matchId, qty, cost});
+  });
+  await confirmReceiveStock(finalLines, dealer);
+});
+
+async function confirmManualReceive(){
+  const rows = document.querySelectorAll('#receive-manual-rows > div');
+  const finalLines = [];
+  rows.forEach(row=>{
+    const name = row.querySelector('.rm-name').value.trim();
+    const qty = parseInt(row.querySelector('.rm-qty').value) || 0;
+    const cost = parseFloat(row.querySelector('.rm-cost').value) || 0;
+    if(name && qty > 0){
+      const matched = fuzzyMatchItem(name);
+      finalLines.push({matchId: matched ? matched.id : null, name, qty, cost});
+    }
+  });
+  const dealer = document.getElementById('receive-manual-dealer').value.trim();
+  await confirmReceiveStock(finalLines, dealer);
+}
+document.getElementById('receive-manual-confirm-btn').addEventListener('click', confirmManualReceive);
+
+async function confirmReceiveStock(lines, dealer){
+  if(lines.length === 0){ alert('No lines to add.'); return; }
+  for(const line of lines){
+    if(line.matchId){
+      if(firebaseReady){
+        await inventoryRef().doc(line.matchId).update({
+          qty: firebase.firestore.FieldValue.increment(line.qty),
+          cost: line.cost || undefined
+        });
+      } else {
+        const item = localInventory.find(i=>i.id===line.matchId);
+        if(item){ item.qty += line.qty; if(line.cost) item.cost = line.cost; }
+      }
+    } else if(line.name){
+      // brand new item — create with sensible defaults
+      await saveItem({
+        name: line.name, qty: line.qty, cost: line.cost||0,
+        price: line.cost ? line.cost*1.3 : 0, dealer,
+        brand:'', category:'', sku:'', dealerPhone:'', dealerEmail:''
+      });
+    }
+  }
+  if(firebaseReady){
+    await stockReceiptsRef().add({
+      lines, dealer, receivedBy: currentUserEmail,
+      ts: firebase.firestore.FieldValue.serverTimestamp()
+    });
+  }
+  closeModal('receive-stock-modal');
+  alert('Inventory updated.');
+}
+
+
+renderIdleOrOrder();
+startAuthWatcher();
+</script>
+</body>
+</html>
